@@ -132,7 +132,7 @@ const Profile = (props) => {
                       {loaderData.avatarPath ? (
                         <img
                           className="w-full h-full object-cover object-top rounded-[50%]"
-                          src={`https://bkudoqbqykfhbgcxfelw.supabase.co/storage/v1/object/public/${loaderData.avatarPath}`}
+                          src={`${loaderData.avatarPath}`}
                           ref={avatarInputRef}
                         ></img>
                       ) : (

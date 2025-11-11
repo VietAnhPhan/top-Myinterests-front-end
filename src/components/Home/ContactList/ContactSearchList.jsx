@@ -35,7 +35,7 @@ const ContactSearchList = ({ contacts }) => {
               {contact.username}
             </p>
             <p className="text-sm dark:text-zinc-400 font-medium">
-              {contact.name}
+              {contact.fullname}
             </p>
           </div>
         );

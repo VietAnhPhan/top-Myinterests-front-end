@@ -10,7 +10,7 @@ import Friend from "./components/Home/Friend/Friend";
 import Wrapper from "./components/Wrapper";
 import api from "./api";
 
-const sitename = "Messaging App";
+const sitename = "Myinterests";
 
 const router = createBrowserRouter([
   {
