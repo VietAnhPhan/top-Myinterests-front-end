@@ -1,9 +1,17 @@
 @import "tailwindcss";
 
 .menuIconWrapper {
-  padding-block: 8px;
+  padding: 8px;
   box-sizing: content-box;
-  /* border-radius: 50%; */
+  border-radius: 5px;
+}
+
+.menuIconWrapper:hover {
+  background: linear-gradient(
+    90deg,
+    oklch(92.952% 0.02186 309.383) 0%,
+    oklch(91.501% 0.03216 341.637) 100%
+  );
 }
 
 @media (prefers-color-scheme: light) {
@@ -15,7 +23,11 @@
   }
 
   .activeMenuItem {
-    background-color: rgba(0, 0, 0, 0.2);
+    background: linear-gradient(
+      90deg,
+      oklch(92.952% 0.02186 309.383) 0%,
+      oklch(91.501% 0.03216 341.637) 100%
+    );
   }
 }
 

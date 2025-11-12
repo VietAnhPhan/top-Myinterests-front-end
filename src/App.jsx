@@ -15,7 +15,7 @@ const supabase = createClient(
 function App() {
   const loaderData = useLoaderData();
   const [avatarPath, setavatarPath] = useState(loaderData.avatarPath);
-  const [activeMenuItem, setactiveMenuItem] = useState("chats");
+  const [activeMenuItem, setactiveMenuItem] = useState("home");
 
   return (
     <>

@@ -9,6 +9,7 @@ import Setting from "./components/Setting";
 import Friend from "./components/Chat/Friend/Friend";
 import Wrapper from "./components/Wrapper";
 import api from "./api";
+import Home from "./components/Home/Home";
 
 const sitename = "Myinterests";
 
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         loader: homeLoader,
-        element: <Chat sitename={sitename} />,
+        element: <Home sitename={sitename} />,
       },
       {
         path: "/chats",

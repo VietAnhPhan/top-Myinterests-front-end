@@ -16,7 +16,7 @@ export const Header = ({ loaderData }) => {
   const headerContext = useContext(HeaderContext);
 
   return (
-    <header className="flex md:flex-col bg-zinc-100 dark:bg-slate-800 md:py-8 border-r-[1px] border-r-zinc-300 dark:border-r-slate-700 z-10 w-64">
+    <header className="flex md:flex-col bg-zinc-100 dark:bg-slate-800 md:py-8 border-r-[1px] border-r-zinc-300 dark:border-r-slate-700 z-10 w-64 shrink-0">
       {/* Logo */}
       <div className="flex items-center gap-x-4 border-b border-purple-200 px-5 pb-5">
         <div
