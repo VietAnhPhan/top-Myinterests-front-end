@@ -9,7 +9,7 @@ const Profile = (props) => {
 
   const [password, setPassword] = useState("");
   const [repeatPassword, setrepeatPassword] = useState("");
-  const [fullname, setFullname] = useState(loaderData.name);
+  const [fullname, setFullname] = useState(loaderData.fullname);
   const [about, setAbout] = useState(loaderData.about);
   const [phone, setPhone] = useState(loaderData.phone);
 
@@ -28,7 +28,7 @@ const Profile = (props) => {
 
   useEffect(() => {
     headerContext.setactiveMenuItem("profile");
-  });
+  },[]);
 
   async function handleUpdate(formData) {
     const password = formData.get("password");

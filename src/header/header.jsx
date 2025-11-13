@@ -9,7 +9,7 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import ExploreOutlinedIcon from "@mui/icons-material/ExploreOutlined";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import FeedOutlinedIcon from "@mui/icons-material/FeedOutlined";
-import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
+import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 
 export const Header = ({ loaderData }) => {
   const avatarContext = useContext(AvatarContext);
@@ -112,8 +112,8 @@ export const Header = ({ loaderData }) => {
       </div>
 
       {/* Profile & Settings */}
-      <div className="flex flex-col gap-y-3 border-t border-purple-200">
-        <div className="px-5 pt-5">
+      <div className="border-t border-purple-200">
+        <div className="flex flex-col gap-y-5 px-5 pt-5">
           <Link to="/settings">
             <div
               className={`${styles.menuIconWrapper} ${
@@ -124,6 +124,8 @@ export const Header = ({ loaderData }) => {
             >
               <Settings className={styles.menuIcon} /> Settings
             </div>
+
+            {/* Profile */}
           </Link>
           <div className="flex md:block">
             <Link to="/profile" className="col-start-1 flex md:block">
@@ -132,10 +134,10 @@ export const Header = ({ loaderData }) => {
                   headerContext.activeMenuItem === "profile"
                     ? styles.activeMenuItem
                     : ""
-                }`}
+                } flex items-center gap-x-3`}
               >
                 {loaderData.avatarPath ? (
-                  <div className="w-7 h-7">
+                  <div className="w-10 h-10">
                     <img
                       className="rounded-[50%] object-cover object-top w-full h-full"
                       src={`${avatarContext.avatarPath}`}
@@ -159,6 +161,13 @@ export const Header = ({ loaderData }) => {
                     />
                   </svg>
                 )}
+
+                <div>
+                  <p>{loaderData.fullname}</p>
+                  <p className="text-xs text-gray-500">
+                    @{loaderData.username}
+                  </p>
+                </div>
               </div>
             </Link>
           </div>
