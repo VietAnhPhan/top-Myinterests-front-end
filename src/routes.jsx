@@ -1,4 +1,4 @@
-import { createBrowserRouter, redirect } from "react-router";
+import { createBrowserRouter, redirect, useRouteError } from "react-router";
 import App from "./App";
 import Chat from "./components/Chat/Chat";
 import Login from "./components/Login/Login";
@@ -12,7 +12,7 @@ import api from "./api";
 import Home from "./components/Home/Home";
 import Search from "./components/Search/Search";
 import Explore from "./components/Explore/Explore";
-import PostList from "./components/Post/PostList";
+import MyPosts from "./components/Post/MyPosts";
 
 const sitename = "Myinterests";
 
@@ -82,14 +82,19 @@ const router = createBrowserRouter([
           </Wrapper>
         ),
       },
-        {
+      {
         path: "/posts",
         loader: dataLoader,
         element: (
           <Wrapper>
-            <PostList sitename={sitename} />
+            <MyPosts sitename={sitename} />
           </Wrapper>
         ),
+        ErrorBoundary: function ErrorBoundary() {
+          let error = useRouteError();
+          console.error(error);
+          return <>Dang!</>;
+        },
       },
     ],
   },

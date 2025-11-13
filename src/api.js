@@ -110,7 +110,7 @@ const api = {
     }
   },
 
-   getPostsByUsername: async (username) => {
+  getPostsByUsername: async (username) => {
     try {
       const response = await fetch(`${serverURL}/posts/users/${username}`, {
         method: "GET",
@@ -473,6 +473,28 @@ const api = {
       const response = await fetch(`${serverURL}/posts`, {
         method: "GET",
         headers: {
+          Authorization: `bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      return result;
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+  createPost: async (body) => {
+    try {
+      const response = await fetch(`${serverURL}/posts`, {
+        method: "POST",
+        body: JSON.stringify({ body }),
+        headers: {
+          "Content-type": "application/json",
           Authorization: `bearer ${token}`,
         },
       });

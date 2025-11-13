@@ -7,6 +7,7 @@ import api from "../../api";
 import People from "../People/People";
 import { Button } from "../Button";
 import Post from "../Post/Post";
+import { WarningToast } from "../Toast";
 
 function Search() {
   const headerContext = useContext(HeaderContext);
@@ -17,6 +18,7 @@ function Search() {
   const countResult = people.length + posts.length;
   const searchTerm = inputRef.current ? inputRef.current.value : "";
   const [activeTab, setActiveTab] = useState("all");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     headerContext.setactiveMenuItem("search");
@@ -25,7 +27,10 @@ function Search() {
   async function handleSearch() {
     const searchTerm = inputRef.current.value;
 
-    if (searchTerm == "") return;
+    if (searchTerm == "") {
+      setError("Your content should not be empty!");
+      return;
+    }
 
     const searchedPeople = await api.getSearchPeople(searchTerm);
     const searchedPosts = await api.getSearchedPosts(searchTerm);
@@ -37,6 +42,7 @@ function Search() {
 
   return (
     <>
+      {error !== "" && <WarningToast message={error} />}
       <div className="overflow-auto">
         <Heading1 text="Search" />
         <p className="mt-3">Find posts, people, and topics</p>
@@ -49,7 +55,7 @@ function Search() {
                 ref={inputRef}
                 type="text"
                 placeholder="Search for anything..."
-                className="pl-10 py-1 w-full rounded-lg bg-gray-100"
+                className="pl-10 py-2 w-full rounded-lg bg-gray-100"
               />
               <SearchOutlinedIcon className="absolute left-2.5 top-1/2 -translate-y-1/2" />
             </div>

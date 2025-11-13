@@ -7,11 +7,13 @@ import Post from "./Post";
 import Avatar from "../Avatar";
 import { Button } from "../Button";
 import AddPhotoAlternateOutlinedIcon from "@mui/icons-material/AddPhotoAlternateOutlined";
+import { WarningToast } from "../Toast";
 
-function PostList() {
+function MyPosts() {
   const [posts, setPosts] = useState([]);
   const dataLoader = useLoaderData();
   const previewPhotos = useRef(null);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     async function fetchData() {
@@ -41,12 +43,27 @@ function PostList() {
     }
   }
 
-  function handlePost(formData) {
-  
+  async function handlePost(formData) {
+    const body = formData.get("content");
+
+    if (body == "") {
+      setError("Post should have content!");
+      return;
+    }
+
+    const Post = await api.createPost(body);
+
+    console.log(Post);
+
+    const updatedPosts = [...posts];
+    updatedPosts.push(Post);
+
+    setPosts(updatedPosts);
   }
 
   return (
     <>
+      {error !== "" && <WarningToast message={error} />}
       <Heading1 text="My Posts" />
       <p className="mt-3">Create and manage your posts</p>
 
@@ -81,7 +98,7 @@ function PostList() {
               className="hidden"
               onChange={(e) => handleFiles(e.target.files)}
             />
-            <Button text="Post" callback={handlePost} type={"submit"}></Button>
+            <Button text="Post" type={"submit"}></Button>
           </div>
         </form>
       </ContentWrapper>
@@ -89,15 +106,15 @@ function PostList() {
       {posts.length > 0 && (
         <>
           <p className="mt-10">Your posts ({posts.length})</p>
-          {posts.map((post) => (
-            <ContentWrapperNoBorder key={post.id}>
-              <Post author={post.author} post={post} />
-            </ContentWrapperNoBorder>
-          ))}
+          <div className="flex flex-col gap-y-5 mt-5">
+            {posts.map((post) => (
+              <Post key={post.id} author={post.author} post={post} />
+            ))}
+          </div>
         </>
       )}
     </>
   );
 }
 
-export default PostList;
+export default MyPosts;

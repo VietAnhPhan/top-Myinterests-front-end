@@ -46,17 +46,17 @@ function Home() {
           </div>
           <div className="flex flex-col gap-y-3">
             {postsCol2.map((post) => (
-              <Post author={post.author} post={post} />
+              <Post key={post.id} author={post.author} post={post} />
             ))}
           </div>
           <div className="flex flex-col gap-y-3">
             {postsCol3.map((post) => (
-              <Post author={post.author} post={post} />
+              <Post key={post.id} author={post.author} post={post} />
             ))}
           </div>
           <div className="flex flex-col gap-y-3">
             {postsCol4.map((post) => (
-              <Post author={post.author} post={post} />
+              <Post key={post.id} author={post.author} post={post} />
             ))}
           </div>
         </div>
