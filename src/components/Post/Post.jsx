@@ -15,7 +15,7 @@ function Post(props) {
           />
           <div>
             <p>{props.author.fullname}</p>
-            <p>@{props.author.username}</p>
+            <p className="text-xs">@{props.author.username}</p>
           </div>
         </div>
         <p>{props.post.body.slice(0, 146)}</p>

@@ -55,13 +55,10 @@ const api = {
 
   getSearchPeople: async (search) => {
     try {
-      const response = await fetch(
-        `${serverURL}/users?search=${search}`,
-        {
-          method: "GET",
-          headers: { Authorization: `bearer ${token}` },
-        }
-      );
+      const response = await fetch(`${serverURL}/users?search=${search}`, {
+        method: "GET",
+        headers: { Authorization: `bearer ${token}` },
+      });
 
       if (!response.ok) {
         throw new Error(`Response status: ${response.status}`);
@@ -75,15 +72,50 @@ const api = {
     }
   },
 
-   getSearchedPosts: async (search) => {
+  getTopPeople: async () => {
     try {
-      const response = await fetch(
-        `${serverURL}/posts?search=${search}`,
-        {
-          method: "GET",
-          headers: { Authorization: `bearer ${token}` },
-        }
-      );
+      const response = await fetch(`${serverURL}/users?top_users=true`, {
+        method: "GET",
+        headers: { Authorization: `bearer ${token}` },
+      });
+
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+      }
+
+      const result = await response.json();
+
+      return result;
+    } catch (err) {
+      console.error(err.message);
+    }
+  },
+
+  getSearchedPosts: async (search) => {
+    try {
+      const response = await fetch(`${serverURL}/posts?search=${search}`, {
+        method: "GET",
+        headers: { Authorization: `bearer ${token}` },
+      });
+
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+      }
+
+      const result = await response.json();
+
+      return result;
+    } catch (err) {
+      console.error(err.message);
+    }
+  },
+
+  getTrendingPosts: async () => {
+    try {
+      const response = await fetch(`${serverURL}/posts?trending=true`, {
+        method: "GET",
+        headers: { Authorization: `bearer ${token}` },
+      });
 
       if (!response.ok) {
         throw new Error(`Response status: ${response.status}`);
@@ -417,7 +449,7 @@ const api = {
     }
   },
 
-   getPosts: async () => {
+  getPosts: async () => {
     try {
       const response = await fetch(`${serverURL}/posts`, {
         method: "GET",

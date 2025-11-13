@@ -11,6 +11,7 @@ import Wrapper from "./components/Wrapper";
 import api from "./api";
 import Home from "./components/Home/Home";
 import Search from "./components/Search/Search";
+import Explore from "./components/Explore/Explore";
 
 const sitename = "Myinterests";
 
@@ -68,6 +69,15 @@ const router = createBrowserRouter([
         element: (
           <Wrapper>
             <Search sitename={sitename} />
+          </Wrapper>
+        ),
+      },
+      {
+        path: "/explore",
+        loader: friendsLoader,
+        element: (
+          <Wrapper>
+            <Explore sitename={sitename} />
           </Wrapper>
         ),
       },
