@@ -13,6 +13,7 @@ import Home from "./components/Home/Home";
 import Search from "./components/Search/Search";
 import Explore from "./components/Explore/Explore";
 import MyPosts from "./components/Post/MyPosts";
+import FriendList from "./components/FriendList";
 
 const sitename = "Myinterests";
 
@@ -60,7 +61,7 @@ const router = createBrowserRouter([
         loader: friendsLoader,
         element: (
           <Wrapper>
-            <Friend sitename={sitename} />
+            <FriendList sitename={sitename} />
           </Wrapper>
         ),
       },

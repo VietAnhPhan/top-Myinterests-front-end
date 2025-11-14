@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import api from "../../api";
 import { Button } from "../Button";
 import { ContentWrapper } from "../Utilities/Utilities";
