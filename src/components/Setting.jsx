@@ -13,7 +13,7 @@ const Setting = (props) => {
   });
 
   function logout() {
-    localStorage.removeItem("messaging_app_access");
+    localStorage.removeItem("myinterests_app_access");
     localStorage.removeItem("user");
     navigate("/");
   }

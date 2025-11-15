@@ -45,7 +45,7 @@ function Signup(props) {
       username,
       password,
       repeatPassword,
-      name:fullname,
+      name: fullname,
       email,
     };
 
@@ -56,7 +56,7 @@ function Signup(props) {
       }
 
       localStorage.setItem(
-        "messaging_app_access",
+        "myinterests_app_access",
         JSON.stringify({
           username: result.username,
           token: result.token,

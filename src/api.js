@@ -2,7 +2,7 @@ const serverURL = import.meta.env.PROD
   ? import.meta.env.VITE_SERVER_DOMAIN
   : import.meta.env.VITE_LOCAL_HOST;
 
-const access = JSON.parse(localStorage.getItem("messaging_app_access"));
+const access = JSON.parse(localStorage.getItem("myinterests_app_access"));
 const token = access ? access.token : "";
 
 const api = {

@@ -23,7 +23,7 @@ const router = createBrowserRouter([
     middleware: [authMiddleware],
     loader: dataLoader,
     element: <App></App>,
-    HydrateFallback: function Test() {
+    HydrateFallback: function loading() {
       return <>This is blank page</>;
     },
     children: [
@@ -107,10 +107,14 @@ const router = createBrowserRouter([
     path: "/sign-up",
     element: <Signup sitename={sitename} />,
   },
+  {
+    path: "/guest",
+    loader: loginAsGuest,
+  },
 ]);
 
 async function authMiddleware({ context }) {
-  const access = JSON.parse(localStorage.getItem("messaging_app_access"));
+  const access = JSON.parse(localStorage.getItem("myinterests_app_access"));
 
   if (!access) throw redirect("/login");
 
@@ -153,6 +157,10 @@ async function friendsLoader() {
   };
 
   return friends;
+}
+
+async function loginAsGuest() {
+  redirect("/");
 }
 
 export default router;

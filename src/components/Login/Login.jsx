@@ -5,6 +5,9 @@ import { ErrorBoundary } from "react-error-boundary";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import api from "../../api";
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import GoogleIcon from "@mui/icons-material/Google";
+import GitHubIcon from "@mui/icons-material/GitHub";
 
 function Login(props) {
   const [username, setUsername] = useState("");
@@ -27,7 +30,7 @@ function Login(props) {
       }
 
       localStorage.setItem(
-        "messaging_app_access",
+        "myinterests_app_access",
         JSON.stringify({
           username: result.username,
           token: result.token,
@@ -44,22 +47,25 @@ function Login(props) {
     <ErrorBoundary
       fallback={<p>There was an error while submitting the form</p>}
     >
-      <div className={styles.backgroundColor}>
-        <div className={styles.container}>
+      <div className="flex items-center h-full bg-gradient-to-br from-blue-300 to-pink-300">
+        <div className="w-xl mx-auto bg-white py-12 px-10 rounded-2xl">
           <title>{`Login | ${props.sitename}`}</title>
-          <div className="flex pt-5">
-            <Link to="/">
-              <img src={logoImage} alt="login icon" className="w-32" />
-            </Link>
+          {/* Logo */}
+          <div className="flex justify-center items-center gap-x-4 px-5 pb-5">
+            <div
+              className={`w-12 h-12 bg-gradient-to-br from-purple-500 via-pink-500 to-blue-500 rounded-xl flex items-center justify-center shadow-lg`}
+            >
+              <span className="text-white text-xl">✨</span>
+            </div>
+            <p className="text-5xl bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">
+              Myinterest
+            </p>
           </div>
           <div className="flex items-center gap-x-10 h-full justify-center">
             <div className="rounded-md xl:col-span-1 xl:col-start-3 flex-1">
-              <div className="mb-8 flex flex-col gap-2.5">
-                <h1 className="font-bold text-green-600 text-[60px]">
-                  Have a conversation has never been easier
-                </h1>
-                <p className="text-gray-500">
-                  Please enter your credientials and press login
+              <div className="flex flex-col gap-2.5">
+                <p className="text-gray-500 text-center">
+                  Sign in to your account to continue
                 </p>
               </div>
               <form action={login} className="flex flex-col">
@@ -123,17 +129,44 @@ function Login(props) {
                   </div>
                 </div>
                 {authResults && <p className="text-red-500">{authResults}</p>}
-                <button type="submit" className="mt-5 button-solid">
-                  Login
+                <button
+                  type="submit"
+                  className="mt-5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 py-1.5 rounded-lg text-white"
+                >
+                  Sign in
                 </button>
-                <p className="text-center">Or</p>{" "}
-                <Link className="text-center" to="/sign-up">
-                  Sign up with email
-                </Link>
+                <p
+                  className={`text-center flex items-center gap-x-5 text-gray-400 text-xl mt-5 ${styles.line}`}
+                >
+                  or
+                </p>
+                <div className="flex flex-col gap-y-3 mt-5">
+                  <a
+                    href="/guest"
+                    className="flex justify-center items-center gap-x-3 py-1.5 border border-gray-300 rounded-xl"
+                  >
+                    <AccountCircleOutlinedIcon /> Continue as guest
+                  </a>
+                  <a
+                    href="/guest"
+                    className="flex justify-center items-center gap-x-3 py-1.5 border border-gray-300 rounded-xl"
+                  >
+                    <GoogleIcon /> Continue with Google
+                  </a>
+                  <a
+                    href="/guest"
+                    className="flex justify-center items-center gap-x-3 py-1.5 border border-gray-300 rounded-xl"
+                  >
+                    <GitHubIcon /> Continue with Github
+                  </a>
+                </div>
+                <div className="flex justify-center mt-5 gap-x-1">
+                  <p>Don't have an account?</p>
+                  <Link className="text-center" to="/sign-up">
+                    Sign up with email
+                  </Link>
+                </div>
               </form>
-            </div>
-            <div className="flex-1">
-              <img width={700} src={introImage} alt="intro app" />
             </div>
           </div>
         </div>
