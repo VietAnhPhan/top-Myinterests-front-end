@@ -41,4 +41,18 @@ function ErrorCatching() {
   );
 }
 
-export { ContentWrapper, ContentWrapperNoBorder, Loading, ErrorCatching };
+function DateTimeString(props) {
+  const d = new Date(props.datetime);
+  const customDateTime = `${d.getMonth()} - ${d.getDate()}  - ${d.getFullYear()} at ${d.getHours()}:${d.getMinutes()}`;
+
+  console.log(customDateTime);
+  return <>{customDateTime}</>;
+}
+
+export {
+  ContentWrapper,
+  ContentWrapperNoBorder,
+  Loading,
+  ErrorCatching,
+  DateTimeString,
+};
