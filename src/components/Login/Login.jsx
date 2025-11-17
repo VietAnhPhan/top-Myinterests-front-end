@@ -142,20 +142,20 @@ function Login(props) {
                 </p>
                 <div className="flex flex-col gap-y-3 mt-5">
                   <a
-                    href="/guest"
+                    href="/login/guest"
                     className="flex justify-center items-center gap-x-3 py-1.5 border border-gray-300 rounded-xl"
                   >
                     <AccountCircleOutlinedIcon /> Continue as guest
                   </a>
                   <a
-                    href="/guest"
+                    href="/login/google"
                     className="flex justify-center items-center gap-x-3 py-1.5 border border-gray-300 rounded-xl"
                   >
                     <GoogleIcon /> Continue with Google
                   </a>
                   <a
-                    href="/guest"
-                    className="flex justify-center items-center gap-x-3 py-1.5 border border-gray-300 rounded-xl"
+                    href="/login/github"
+                    className="flex justify-center items-center gap-x-3 py-1.5 border border-gray-300 rounded-xl" target="_blank"
                   >
                     <GitHubIcon /> Continue with Github
                   </a>

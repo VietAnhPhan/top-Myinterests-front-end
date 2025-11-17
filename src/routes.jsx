@@ -108,8 +108,12 @@ const router = createBrowserRouter([
     element: <Signup sitename={sitename} />,
   },
   {
-    path: "/guest",
+    path: "/login/guest",
     loader: loginAsGuest,
+  },
+  {
+    path: "/login/github",
+    loader: loginByGithub,
   },
 ]);
 
@@ -133,12 +137,12 @@ function dataLoader({ context }) {
 
 async function homeLoader({ context }) {
   const user = context.get(UserContext);
-  const conversations = await api.getConversations(user.id);
+  // const conversations = await api.getConversations(user.id);
   let chatUser = null;
 
   const data = {
     user,
-    conversations,
+    // conversations,
     chatUser,
   };
 
@@ -160,7 +164,20 @@ async function friendsLoader() {
 }
 
 async function loginAsGuest() {
-  redirect("/");
+  const auth = await api.loginAsGuest();
+
+  localStorage.setItem(
+    "myinterests_app_access",
+    JSON.stringify({
+      username: auth.username,
+      token: auth.token,
+    })
+  );
+  throw redirect("/");
+}
+
+async function loginByGithub() {
+  throw redirect(api.loginByGithub());
 }
 
 export default router;
