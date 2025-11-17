@@ -1,8 +1,18 @@
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
+import { useState } from "react";
+import api from "../../api";
 
 function Post(props) {
+  const [likeCount, setLikeCount] = useState(props.post._count.Like);
+
+  async function handleLike() {
+    await api.likePost(props.post.id);
+    const likeCount = await api.getLikes(props.post.id);
+    setLikeCount(likeCount.length);
+  }
+
   return (
     <>
       <div className="hover:shadow-lg p-5 bg-white rounded-2xl hover:-translate-y-1 transition-all">
@@ -27,11 +37,17 @@ function Post(props) {
           </div>
 
           {/* Posted date */}
-          <p className="text-xs shrink-0 text-gray-600">{new Date(props.post.createdAt).toDateString()}</p>
+          <p className="text-xs shrink-0 text-gray-600">
+            {new Date(props.post.createdAt).toDateString()}
+          </p>
         </div>
 
         <div className="flex items-center gap-5 pt-3 border-t border-purple-100 mt-5">
-          <FavoriteBorderOutlinedIcon /> {props.post._count.Like}
+          <FavoriteBorderOutlinedIcon
+            className="hover:cursor-pointer hover:text-pink-700"
+            onClick={handleLike}
+          />{" "}
+          {likeCount}
           <ChatBubbleOutlineOutlinedIcon /> {props.post._count.Comment}
           <ShareOutlinedIcon />
         </div>

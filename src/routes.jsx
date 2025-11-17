@@ -101,6 +101,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
+    loader: hasLogin,
     element: <Login sitename={sitename} />,
   },
   {
@@ -137,12 +138,12 @@ function dataLoader({ context }) {
 
 async function homeLoader({ context }) {
   const user = context.get(UserContext);
-  // const conversations = await api.getConversations(user.id);
+  const conversations = await api.getConversations(user.id);
   let chatUser = null;
 
   const data = {
     user,
-    // conversations,
+    conversations,
     chatUser,
   };
 
@@ -178,6 +179,16 @@ async function loginAsGuest() {
 
 async function loginByGithub() {
   throw redirect(api.loginByGithub());
+}
+async function hasLogin() {
+  const access = JSON.parse(localStorage.getItem("myinterests_app_access"));
+  
+  if(!access) return;
+
+  const user = await api.getUser(access.username);
+  if (user) {
+    throw redirect("/");
+  }
 }
 
 export default router;
