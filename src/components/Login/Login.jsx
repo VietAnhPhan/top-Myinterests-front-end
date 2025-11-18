@@ -131,7 +131,7 @@ function Login(props) {
                 {authResults && <p className="text-red-500">{authResults}</p>}
                 <button
                   type="submit"
-                  className="mt-5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 py-1.5 rounded-lg text-white"
+                  className="mt-5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 py-1.5 rounded-lg text-white hover:from-blue-700 hover:via-purple-700 hover:to-pink-700"
                 >
                   Sign in
                 </button>
