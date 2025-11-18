@@ -70,15 +70,17 @@ function Post(props) {
         <div className="flex items-center gap-5 pt-3 border-t border-purple-100 mt-5">
           <FavoriteBorderOutlinedIcon
             className="hover:cursor-pointer hover:text-pink-700"
+            fontSize="small"
             onClick={handleLike}
           />
           {likeCount}
           <ChatBubbleOutlineOutlinedIcon
             onClick={handleOpenComment}
             className="hover:cursor-pointer"
+            fontSize="small"
           />
           {props.post._count.Comment}
-          <ShareOutlinedIcon />
+          <ShareOutlinedIcon fontSize="small"/>
         </div>
 
         <div className="flex gap-x-3 mt-5" ref={commentRef}>
