@@ -104,7 +104,7 @@ function Post(props) {
               >
                 <div className="flex items-center gap-x-3">
                   <Avatar user={comment.User} type="commentAvatar" />
-                  <div>
+                  <div className="text-sm">
                     <p className="flex gap-x-2">
                       <span className="font-semibold">
                         {comment.User.fullname}
