@@ -10,13 +10,15 @@ import ExploreOutlinedIcon from "@mui/icons-material/ExploreOutlined";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import FeedOutlinedIcon from "@mui/icons-material/FeedOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
+import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 
 export const Header = ({ loaderData }) => {
   const avatarContext = useContext(AvatarContext);
   const headerContext = useContext(HeaderContext);
 
   return (
-    <header className="flex md:flex-col bg-zinc-100 dark:bg-slate-800 md:py-8 border-r-[1px] border-r-zinc-300 dark:border-r-slate-700 z-10 w-64 shrink-0">
+    <header className="flex md:flex-col bg-white dark:bg-slate-800 md:py-8 border-r-[1px] border-r-zinc-300 dark:border-r-slate-700 z-10 w-64 shrink-0">
       {/* Logo */}
       <div className="flex items-center gap-x-4 border-b border-purple-200 px-5 pb-5">
         <div
@@ -30,7 +32,7 @@ export const Header = ({ loaderData }) => {
       </div>
       {/* Menu items */}
       <div className="px-5 pt-10 flex-1">
-        <div className="flex flex-col gap-y-3">
+        <div className="flex flex-col gap-y-3 text-sm">
           <Link to="/">
             <div
               className={`${styles.menuIconWrapper} ${
@@ -39,7 +41,7 @@ export const Header = ({ loaderData }) => {
                   : ""
               } flex items-center gap-x-3`}
             >
-              <HomeOutlinedIcon /> Home
+              <HomeOutlinedIcon fontSize="small" /> Home
             </div>
           </Link>
           <Link to="/search">
@@ -50,7 +52,7 @@ export const Header = ({ loaderData }) => {
                   : ""
               } flex items-center gap-x-3`}
             >
-              <SearchOutlinedIcon /> Search
+              <SearchOutlinedIcon fontSize="small" /> Search
             </div>
           </Link>
           <Link to="/explore">
@@ -61,7 +63,7 @@ export const Header = ({ loaderData }) => {
                   : ""
               } flex items-center gap-x-3`}
             >
-              <ExploreOutlinedIcon /> Explore
+              <ExploreOutlinedIcon fontSize="small" /> Explore
             </div>
           </Link>
           <Link to="/notifications">
@@ -72,7 +74,7 @@ export const Header = ({ loaderData }) => {
                   : ""
               } flex items-center gap-x-3`}
             >
-              <NotificationsNoneOutlinedIcon /> Notifications
+              <NotificationsNoneOutlinedIcon fontSize="small" /> Notifications
             </div>
           </Link>
           <Link to="/friends">
@@ -83,7 +85,7 @@ export const Header = ({ loaderData }) => {
                   : ""
               } flex items-center gap-x-3`}
             >
-              <Users /> Friends
+              <PeopleAltOutlinedIcon fontSize="small" /> Friends
             </div>
           </Link>
           <Link to="/posts">
@@ -94,7 +96,7 @@ export const Header = ({ loaderData }) => {
                   : ""
               } flex items-center gap-x-3`}
             >
-              <FeedOutlinedIcon /> Posts
+              <FeedOutlinedIcon fontSize="small" /> Posts
             </div>
           </Link>
           <Link to="/chats">
@@ -105,7 +107,7 @@ export const Header = ({ loaderData }) => {
                   : ""
               } flex items-center gap-x-3`}
             >
-              <ChatBubbleOutlineOutlinedIcon /> Chats
+              <ChatBubbleOutlineOutlinedIcon fontSize="small" /> Chats
             </div>
           </Link>
         </div>
@@ -122,7 +124,7 @@ export const Header = ({ loaderData }) => {
                   : ""
               } flex items-center gap-x-3`}
             >
-              <Settings className={styles.menuIcon} /> Settings
+              <SettingsOutlinedIcon className={styles.menuIcon} /> Settings
             </div>
 
             {/* Profile */}
