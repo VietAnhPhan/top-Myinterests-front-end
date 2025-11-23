@@ -49,7 +49,7 @@ function Search() {
 
         {/* Search input & button */}
         <ContentWrapper>
-          <div className="flex items-center gap-x-2 ">
+          <div className="flex gap-x-2 ">
             <div className="relative flex-1">
               <input
                 ref={inputRef}
