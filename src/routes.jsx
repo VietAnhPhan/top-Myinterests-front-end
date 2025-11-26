@@ -16,6 +16,7 @@ import MyPosts from "./components/Post/MyPosts";
 import FriendList from "./components/FriendList";
 import { ErrorCatching } from "./components/Utilities/Utilities";
 import Notifications from "./components/Notification/Notifications";
+import HydrationLoader from "./components/HydrationLoader";
 
 const sitename = "Myinterests";
 
@@ -25,9 +26,7 @@ const router = createBrowserRouter([
     middleware: [authMiddleware],
     loader: dataLoader,
     element: <App></App>,
-    HydrateFallback: function loading() {
-      return <>This is blank page</>;
-    },
+    hydrateFallbackElement: <HydrationLoader />,
     children: [
       {
         path: "/",
@@ -52,7 +51,7 @@ const router = createBrowserRouter([
         loader: dataLoader,
         element: (
           <Wrapper>
-          <Profile sitename={sitename} />
+            <Profile sitename={sitename} />
           </Wrapper>
         ),
       },
