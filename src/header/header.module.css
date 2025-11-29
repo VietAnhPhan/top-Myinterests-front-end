@@ -7,11 +7,12 @@
 }
 
 .menuIconWrapper:hover {
-  background: linear-gradient(
+  /* background: linear-gradient(
     90deg,
     oklch(92.952% 0.02186 309.383) 0%,
     oklch(91.501% 0.03216 341.637) 100%
-  );
+  ); */
+  /* background-color: rgb(0 70 255 / 20%); */
 }
 
 @media (prefers-color-scheme: light) {
@@ -19,7 +20,13 @@
     color: rgba(0, 0, 0, 0.6);
   }
   .menuIconWrapper:hover {
-    background-color: rgba(0, 0, 0, 0.2);
+    /* background-color: rgba(0, 0, 0, 0.2);
+     */
+      background: linear-gradient(
+      90deg,
+      oklch(92.952% 0.02186 309.383) 0%,
+      oklch(91.501% 0.03216 341.637) 100%
+    );
   }
 
   .activeMenuItem {
@@ -36,10 +43,12 @@
     /* color: rgba(255, 255, 255, 0.6); */
   }
   .menuIconWrapper:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    /* background-color: rgba(255, 255, 255, 0.2);
+     */
+    background-color: rgb(0 70 255 / 20%);
   }
 
   .activeMenuItem {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgb(0 70 255 / 20%);
   }
 }
