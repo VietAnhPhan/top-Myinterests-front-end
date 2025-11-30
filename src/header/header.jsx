@@ -38,7 +38,7 @@ export const Header = ({ loaderData }) => {
                   : ""
               } flex items-center gap-x-3`}
             >
-              <HomeOutlinedIcon fontSize="small" /> Home
+              <HomeOutlinedIcon fontSize="medium" /> Home
             </div>
           </Link>
           <Link to="/search">
@@ -49,7 +49,7 @@ export const Header = ({ loaderData }) => {
                   : ""
               } flex items-center gap-x-3`}
             >
-              <SearchOutlinedIcon fontSize="small" /> Search
+              <SearchOutlinedIcon fontSize="medium" /> Search
             </div>
           </Link>
           <Link to="/explore">
@@ -60,7 +60,7 @@ export const Header = ({ loaderData }) => {
                   : ""
               } flex items-center gap-x-3`}
             >
-              <ExploreOutlinedIcon fontSize="small" /> Explore
+              <ExploreOutlinedIcon fontSize="medium" /> Explore
             </div>
           </Link>
           <Link to="/notifications">
@@ -71,7 +71,7 @@ export const Header = ({ loaderData }) => {
                   : ""
               } flex items-center gap-x-3`}
             >
-              <NotificationsNoneOutlinedIcon fontSize="small" /> Notifications
+              <NotificationsNoneOutlinedIcon fontSize="medium" /> Notifications
             </div>
           </Link>
           <Link to="/friends">
@@ -82,7 +82,7 @@ export const Header = ({ loaderData }) => {
                   : ""
               } flex items-center gap-x-3`}
             >
-              <PeopleAltOutlinedIcon fontSize="small" /> Friends
+              <PeopleAltOutlinedIcon fontSize="medium" /> Friends
             </div>
           </Link>
           <Link to="/posts">
@@ -93,7 +93,7 @@ export const Header = ({ loaderData }) => {
                   : ""
               } flex items-center gap-x-3`}
             >
-              <FeedOutlinedIcon fontSize="small" /> Posts
+              <FeedOutlinedIcon fontSize="medium" /> Posts
             </div>
           </Link>
           <Link to="/chats">
@@ -104,7 +104,7 @@ export const Header = ({ loaderData }) => {
                   : ""
               } flex items-center gap-x-3`}
             >
-              <ChatBubbleOutlineOutlinedIcon fontSize="small" /> Chats
+              <ChatBubbleOutlineOutlinedIcon fontSize="medium" /> Chats
             </div>
           </Link>
 
@@ -112,7 +112,7 @@ export const Header = ({ loaderData }) => {
             <div
               className={`${styles.menuIconWrapper} flex text-white justify-center items-center gap-x-3 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500`}
             >
-              <AddBoxOutlinedIcon fontSize="small" /> New Post
+              <AddBoxOutlinedIcon fontSize="medium" /> New Post
             </div>
           </Link>
         </div>
