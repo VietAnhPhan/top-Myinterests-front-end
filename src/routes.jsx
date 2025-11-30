@@ -80,6 +80,7 @@ const router = createBrowserRouter([
             <Search sitename={sitename} />
           </Wrapper>
         ),
+        errorElement: <ErrorCatching />,
       },
       {
         path: "/explore",
