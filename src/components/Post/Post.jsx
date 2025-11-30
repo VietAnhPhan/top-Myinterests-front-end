@@ -107,9 +107,9 @@ function Post(props) {
 
         <div className="flex gap-x-3 mt-5" ref={commentRef}>
           <Avatar user={userContext} type="commentAvatar" />
-          <form action={handleSubmitComment}>
+          <form action={handleSubmitComment} className="flex-1">
             <textarea
-              className="border border-gray-300"
+              className="border border-gray-300 w-full"
               placeholder="Comment your thoughts here..."
               name="comment"
             ></textarea>
