@@ -74,9 +74,15 @@ function Post(props) {
             </div>
             {/* Post content */}
             <p className="text-[15px]">{props.post.body.slice(0, 146)}</p>
+            {props.post.PostMedia &&
+              props.post.PostMedia.length > 0 &&
+              props.post.PostMedia.map((postMedia) => (
+                <img key={postMedia.id} src={postMedia.filePath}></img>
+              ))}
           </div>
         </div>
 
+        {/* Interaction */}
         <div className="flex items-center gap-5 pt-3 border-t border-purple-100 mt-5">
           {!isLiked && (
             <FavoriteBorderOutlinedIcon
@@ -104,7 +110,7 @@ function Post(props) {
           {props.post._count.Comment}
           <ShareOutlinedIcon fontSize="small" />
         </div>
-
+        {/* Comment form */}
         <div className="flex gap-x-3 mt-5" ref={commentRef}>
           <Avatar user={userContext} type="commentAvatar" />
           <form action={handleSubmitComment} className="flex-1">
@@ -119,7 +125,7 @@ function Post(props) {
           </form>
         </div>
 
-        {comments.length > 0 && (
+        {comments && comments.length > 0 && (
           <ul>
             {comments.map((comment) => (
               <li

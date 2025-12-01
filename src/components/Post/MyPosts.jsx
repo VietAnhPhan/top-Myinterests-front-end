@@ -8,7 +8,7 @@ import Avatar from "../Avatar";
 import { Button } from "../Button";
 import AddPhotoAlternateOutlinedIcon from "@mui/icons-material/AddPhotoAlternateOutlined";
 import { WarningToast } from "../Toast";
-import { HeaderContext } from "../../Context";
+import { HeaderContext, SupabaseContext } from "../../Context";
 import useTitle from "../hooks/useTitle";
 
 function MyPosts() {
@@ -18,6 +18,8 @@ function MyPosts() {
   const previewPhotos = useRef(null);
   const [error, setError] = useState("");
   const headerContext = useContext(HeaderContext);
+  const [selectedPhotos, setSelectedPhotos] = useState([]);
+  const supabaseContext = useContext(SupabaseContext);
 
   useEffect(() => {
     async function fetchData() {
@@ -30,6 +32,11 @@ function MyPosts() {
   }, []);
 
   function handleFiles(files) {
+    setSelectedPhotos((prevSelectedPhots) => [
+      ...prevSelectedPhots,
+      Array.from(files),
+    ]);
+
     for (const file of files) {
       if (!file.type.startsWith("image/")) {
         continue;
@@ -51,12 +58,47 @@ function MyPosts() {
   async function handlePost(formData) {
     const body = formData.get("content");
 
-    if (body == "") {
+    if (!body.trim() && selectedPhotos.length === 0) {
       setError("Post should have content!");
       return;
     }
 
     const Post = await api.createPost(body);
+
+    const postMedias = [];
+  
+    for (const selectedPhoto of selectedPhotos) {
+        console.log(selectedPhoto)
+      
+      const { data, error } = await supabaseContext.storage
+        .from("posts")
+        .upload(
+          `${dataLoader.username}/${selectedPhoto[0].name}`,
+          selectedPhoto[0],
+          {
+            upsert: true,
+          }
+        );
+
+      if (data) {
+        postMedias.push({
+          postId: Post.id,
+          filePath: import.meta.env.VITE_SUPABASE_STORERAGE_URL + data.fullPath,
+          type: selectedPhoto[0].type.split("/")[0],
+        });
+        console.log(data);
+      } else {
+        console.log(error);
+        return;
+      }
+    }
+
+
+
+    if (postMedias.length > 0) {
+      const media = await api.createPostMedias(postMedias);
+      console.log(media);
+    }
 
     const updatedPosts = [...posts];
     updatedPosts.unshift(Post);
@@ -95,6 +137,7 @@ function MyPosts() {
               Add Image
             </label>
             <input
+              multiple
               type="file"
               name="photos"
               id="photos"

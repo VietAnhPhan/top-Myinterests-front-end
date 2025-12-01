@@ -732,6 +732,23 @@ const api = {
       console.log(err);
     }
   },
+
+  createPostMedias: async (postMedias) => {
+    try {
+      const rs = await fetch(`${serverURL}/postMedias`, {
+        method: "POST",
+        body: JSON.stringify({ postMedias }),
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `bearer ${token}`,
+        },
+      });
+      const result = await rs.json();
+      return result;
+    } catch (err) {
+      console.log(err);
+    }
+  },
 };
 
 export default api;
