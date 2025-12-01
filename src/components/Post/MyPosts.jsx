@@ -32,10 +32,7 @@ function MyPosts() {
   }, []);
 
   function handleFiles(files) {
-    setSelectedPhotos((prevSelectedPhots) => [
-      ...prevSelectedPhots,
-      Array.from(files),
-    ]);
+    setSelectedPhotos((prevSelectedPhots) => [...prevSelectedPhots, ...files]);
 
     for (const file of files) {
       if (!file.type.startsWith("image/")) {
@@ -66,15 +63,13 @@ function MyPosts() {
     const Post = await api.createPost(body);
 
     const postMedias = [];
-  
+
     for (const selectedPhoto of selectedPhotos) {
-        console.log(selectedPhoto)
-      
       const { data, error } = await supabaseContext.storage
         .from("posts")
         .upload(
-          `${dataLoader.username}/${selectedPhoto[0].name}`,
-          selectedPhoto[0],
+          `${dataLoader.username}/${selectedPhoto.name}`,
+          selectedPhoto,
           {
             upsert: true,
           }
@@ -84,7 +79,7 @@ function MyPosts() {
         postMedias.push({
           postId: Post.id,
           filePath: import.meta.env.VITE_SUPABASE_STORERAGE_URL + data.fullPath,
-          type: selectedPhoto[0].type.split("/")[0],
+          type: selectedPhoto.type.split("/")[0],
         });
         console.log(data);
       } else {
@@ -92,8 +87,6 @@ function MyPosts() {
         return;
       }
     }
-
-
 
     if (postMedias.length > 0) {
       const media = await api.createPostMedias(postMedias);
