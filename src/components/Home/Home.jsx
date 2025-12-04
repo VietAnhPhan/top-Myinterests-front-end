@@ -3,10 +3,12 @@ import api from "../../api";
 import Post from "../Post/Post";
 import { HeaderContext } from "../../Context";
 import { Loading } from "../Utilities/Utilities";
-import useTitle from "../hooks/useTitle";
+import useTitle from "../../hooks/useTitle";
+import useAPI from "../../hooks/useAPI";
 
 function Home() {
   useTitle("Home");
+  const api = useAPI();
   const [posts, setPosts] = useState([]);
 
   const headerContext = useContext(HeaderContext);

@@ -3,9 +3,10 @@ import logoImage from "/logo-landscape.png";
 import { ErrorBoundary } from "react-error-boundary";
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import api from "../../api";
+import useAPI from "../../hooks/useAPI";
 
 function Signup(props) {
+  const api = useAPI();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setrepeatPassword] = useState("");

@@ -2,13 +2,14 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import { useContext, useEffect, useRef, useState } from "react";
-import api from "../../api";
 import Avatar from "../Avatar";
 import { UserContext } from "../../Context";
 import { DateTimeString } from "../Utilities/Utilities";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import useAPI from "../../hooks/useAPI";
 
 function Post(props) {
+  const api = useAPI();
   const [likeCount, setLikeCount] = useState(props.post._count.Like);
   const userContext = useContext(UserContext);
   const [comments, setComments] = useState(props.post.Comment);

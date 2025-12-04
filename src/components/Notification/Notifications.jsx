@@ -1,13 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import Heading1 from "../Heading/Heading1";
-import api from "../../api";
 import LikeNotification from "./LikeNotification";
 import { ContentWrapper } from "../Utilities/Utilities";
 import { HeaderContext } from "../../Context";
-import useTitle from "../hooks/useTitle";
+import useTitle from "../../hooks/useTitle";
+import useAPI from "../../hooks/useAPI";
 
 function Notifications() {
   useTitle("Notifications");
+  const api = useAPI();
   const [notifications, setNotifications] = useState([]);
   const headerContext = useContext(HeaderContext);
 

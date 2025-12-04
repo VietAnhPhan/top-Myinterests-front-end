@@ -2,14 +2,15 @@ import { useContext, useEffect, useRef, useState } from "react";
 
 import { useLoaderData } from "react-router";
 import { AvatarContext, HeaderContext, SupabaseContext } from "../../Context";
-import api from "../../api";
 import Heading1 from "../Heading/Heading1";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
-import useTitle from "../hooks/useTitle";
+import useTitle from "../../hooks/useTitle";
+import useAPI from "../../hooks/useAPI";
 
-const Profile = (props) => {
+const Profile = () => {
   useTitle("Profile");
+  const api = useAPI();
   const loaderData = useLoaderData();
 
   const [password, setPassword] = useState("");

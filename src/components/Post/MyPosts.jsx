@@ -1,6 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import Heading1 from "../Heading/Heading1";
-import api from "../../api";
 import { useLoaderData } from "react-router";
 import { ContentWrapper, ContentWrapperNoBorder } from "../Utilities/Utilities";
 import Post from "./Post";
@@ -9,10 +8,12 @@ import { Button } from "../Button";
 import AddPhotoAlternateOutlinedIcon from "@mui/icons-material/AddPhotoAlternateOutlined";
 import { WarningToast } from "../Toast";
 import { HeaderContext, SupabaseContext } from "../../Context";
-import useTitle from "../hooks/useTitle";
+import useTitle from "../../hooks/useTitle";
+import useAPI from "../../hooks/useAPI";
 
 function MyPosts() {
   useTitle("Posts");
+  const api = useAPI();
   const [posts, setPosts] = useState([]);
   const dataLoader = useLoaderData();
   const previewPhotos = useRef(null);
@@ -67,13 +68,9 @@ function MyPosts() {
     for (const selectedPhoto of selectedPhotos) {
       const { data, error } = await supabaseContext.storage
         .from("posts")
-        .upload(
-          `${dataLoader.username}/${selectedPhoto.name}`,
-          selectedPhoto,
-          {
-            upsert: true,
-          }
-        );
+        .upload(`${dataLoader.username}/${selectedPhoto.name}`, selectedPhoto, {
+          upsert: true,
+        });
 
       if (data) {
         postMedias.push({

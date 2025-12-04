@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { HeaderContext } from "../Context";
 import { Settings } from "lucide-react";
-import useTitle from "./hooks/useTitle";
+import useTitle from "../hooks/useTitle";
 
 const Setting = (props) => {
   useTitle("Settings");

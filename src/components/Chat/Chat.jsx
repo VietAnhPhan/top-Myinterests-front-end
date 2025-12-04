@@ -5,14 +5,15 @@ import ContactSearchList from "./ContactList/ContactSearchList";
 import ContactInfo from "./ContactInfo/ContactInfo";
 import { ConversationContext, HeaderContext, UserContext } from "../../Context";
 import ChatWindow from "./ConversationRoom/ChatWindow";
-import api from "../../api";
 import styles from "./ConversationRoom/ChatBody.module.css";
 import Heading1 from "../Heading/Heading1";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
-import useTitle from "../hooks/useTitle";
+import useTitle from "../../hooks/useTitle";
+import useAPI from "../../hooks/useAPI";
 
-function Chat(props) {
+function Chat() {
   useTitle("Chats");
+  const api = useAPI();
   const loaderData = useLoaderData();
 
   const [contacts, setContacts] = useState([]);

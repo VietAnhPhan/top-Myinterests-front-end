@@ -1,17 +1,17 @@
 import styles from "./Login.module.css";
-import logoImage from "/messaging-app-logo-500x500px.png";
-import introImage from "/intro-app.png";
 import { ErrorBoundary } from "react-error-boundary";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
-import api from "../../api";
+// import api from "../../api";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import GoogleIcon from "@mui/icons-material/Google";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import useAPI from "../../hooks/useAPI";
 
 function Login(props) {
   const [username, setUsername] = useState("");
   const [authResults, setAuthResults] = useState("");
+  const api = useAPI();
 
   let navigate = useNavigate();
 

@@ -3,17 +3,18 @@ import { HeaderContext } from "../../Context";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import Heading1 from "../Heading/Heading1";
 import { ContentWrapper, ContentWrapperNoBorder } from "../Utilities/Utilities";
-import api from "../../api";
 import People from "../People/Person";
 import { Button } from "../Button";
 import Post from "../Post/Post";
 import TrendingUpOutlinedIcon from "@mui/icons-material/TrendingUpOutlined";
 import TagOutlinedIcon from "@mui/icons-material/TagOutlined";
 import AutoAwesomeOutlinedIcon from "@mui/icons-material/AutoAwesomeOutlined";
-import useTitle from "../hooks/useTitle";
+import useTitle from "../../hooks/useTitle";
+import useAPI from "../../hooks/useAPI";
 
 function Explore() {
   useTitle("Explore");
+  const api = useAPI();
   const headerContext = useContext(HeaderContext);
   const inputRef = useRef(null);
   const [people, setPeople] = useState([]);
