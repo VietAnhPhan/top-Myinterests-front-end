@@ -58,7 +58,7 @@ function Login(props) {
               <span className="text-white text-xl">✨</span>
             </div>
             <p className="text-5xl bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">
-              Myinterest
+              Gotoplaces
             </p>
           </div>
           <div className="flex items-center gap-x-10 h-full justify-center">

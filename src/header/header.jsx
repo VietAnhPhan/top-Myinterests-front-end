@@ -24,7 +24,7 @@ export const Header = ({ loaderData }) => {
         <span className="text-white text-4xl">✨</span>
 
         <span className="text-3xl bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">
-          Myinterest
+          Gotoplaces
         </span>
       </div>
       {/* Menu items */}

@@ -18,7 +18,7 @@ import { ErrorCatching } from "./components/Utilities/Utilities";
 import Notifications from "./components/Notification/Notifications";
 import HydrationLoader from "./components/HydrationLoader";
 
-const sitename = "Myinterests";
+const sitename = "Gotoplaces";
 
 const router = createBrowserRouter([
   {
