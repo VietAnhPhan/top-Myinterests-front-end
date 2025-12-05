@@ -59,7 +59,7 @@ function Chat() {
       return;
     }
 
-    const contacts = await api.getSearchPeople(e.target.value);
+    const contacts = await api.people.getSearchPeople(e.target.value);
     setContacts(contacts);
   }
 
