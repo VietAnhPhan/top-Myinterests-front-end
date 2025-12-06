@@ -1,4 +1,4 @@
-function useAuth(serverURL) {
+function authAPI(serverURL) {
   return {
     login: async (username, password) => {
       const response = await fetch(`${serverURL}/auth/login`, {
@@ -35,7 +35,27 @@ function useAuth(serverURL) {
 
       return result;
     },
+    loginAsGuest: async () => {
+      try {
+        const response = await fetch(`${serverURL}/auth/guests`, {
+          method: "POST",
+        });
+
+        if (!response.ok) {
+          throw new Error(`Response status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        return result;
+      } catch (err) {
+        console.log(err);
+      }
+    },
+
+    loginByGithub: () => {
+      return `${serverURL}/auth/github`;
+    },
   };
 }
 
-export default useAuth;
+export default authAPI;

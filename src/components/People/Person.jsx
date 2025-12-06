@@ -1,17 +1,18 @@
 import { useContext, useState } from "react";
-import api from "../../api";
 import { Button } from "../Button";
 import { ContentWrapper } from "../Utilities/Utilities";
 import { UserContext } from "../../Context";
+import useAPI from "../../hooks/useAPI";
 
 function Person(props) {
+  const api = useAPI();
   const userContext = useContext(UserContext);
   const [followStatus, setFollowStatus] = useState(
     isFollowing(userContext.id, props.person.followee)
   );
 
   async function handleFollow() {
-    const followRequest = await api.followPerson(
+    const followRequest = await api.follow.followPerson(
       userContext.id,
       props.person.id
     );

@@ -1,13 +1,14 @@
 import Heading1 from "./Heading/Heading1";
 import { useContext, useEffect, useState } from "react";
 import { ContentWrapper } from "./Utilities/Utilities";
-import api from "../api";
 import { HeaderContext, UserContext } from "../Context";
 import Following from "./People/Following";
 import useTitle from "../hooks/useTitle";
+import useAPI from "../hooks/useAPI";
 
 function FriendList() {
   useTitle("Friends");
+  const api = useAPI();
   const [activeTab, setActiveTab] = useState("Followers");
   const [followings, setFollowings] = useState([]);
   const [followers, setFollowers] = useState([]);
@@ -15,8 +16,8 @@ function FriendList() {
 
   useEffect(() => {
     async function fetchData() {
-      const followings = await api.getFollowings();
-      const followers = await api.getFollowers();
+      const followings = await api.follow.getFollowings();
+      const followers = await api.follow.getFollowers();
 
       setFollowings(followings);
       setFollowers(followers);

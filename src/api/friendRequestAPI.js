@@ -1,4 +1,4 @@
-function useFriendRequest(serverURL, getToken) {
+function friendRequestAPI(serverURL, getToken) {
   return {
     getSentRequest: async () => {
       try {
@@ -178,4 +178,4 @@ function useFriendRequest(serverURL, getToken) {
   };
 }
 
-export default useFriendRequest;
+export default friendRequestAPI;

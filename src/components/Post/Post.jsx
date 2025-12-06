@@ -25,7 +25,7 @@ function Post(props) {
     const likeCount = await api.post.getLikes(props.post.id);
 
     if (userContext.id !== props.authorId && Like) {
-      await api.sendNotification(props.post.authorId, "like");
+      await api.notification.sendNotification(props.post.authorId, "like");
     }
     setLikeCount(likeCount.length);
   }

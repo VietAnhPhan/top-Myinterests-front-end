@@ -1,4 +1,4 @@
-function usePeople(serverURL, getToken) {
+function peopleAPI(serverURL, getToken) {
   return {
     getSearchPeople: async (search) => {
       try {
@@ -40,4 +40,4 @@ function usePeople(serverURL, getToken) {
   };
 }
 
-export default usePeople;
+export default peopleAPI;

@@ -14,7 +14,7 @@ function Notifications() {
 
   useEffect(() => {
     async function fetchData() {
-      const notifications = await api.getNotifications();
+      const notifications = await api.notification.getNotifications();
 
       setNotifications(notifications);
       headerContext.setactiveMenuItem("notifications");

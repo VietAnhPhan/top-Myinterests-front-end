@@ -40,7 +40,7 @@ const router = createBrowserRouter([
         loader: homeLoader,
         element: (
           // <Wrapper>
-            <Chat sitename={sitename} />
+          <Chat sitename={sitename} />
           // </Wrapper>
         ),
         errorElement: <ErrorCatching />,
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
         loader: dataLoader,
         element: (
           // <Wrapper>
-            <Profile sitename={sitename} />
+          <Profile sitename={sitename} />
           // </Wrapper>
         ),
       },
@@ -59,7 +59,7 @@ const router = createBrowserRouter([
         path: "/settings",
         element: (
           // <Wrapper>
-            <Setting sitename={sitename} />
+          <Setting sitename={sitename} />
           // </Wrapper>
         ),
       },
@@ -68,7 +68,7 @@ const router = createBrowserRouter([
         loader: friendsLoader,
         element: (
           // <Wrapper>
-            <FriendList sitename={sitename} />
+          <FriendList sitename={sitename} />
           // </Wrapper>
         ),
       },
@@ -77,7 +77,7 @@ const router = createBrowserRouter([
         loader: friendsLoader,
         element: (
           // <Wrapper>
-            <Search sitename={sitename} />
+          <Search sitename={sitename} />
           // </Wrapper>
         ),
         errorElement: <ErrorCatching />,
@@ -87,7 +87,7 @@ const router = createBrowserRouter([
         loader: friendsLoader,
         element: (
           // <Wrapper>
-            <Explore sitename={sitename} />
+          <Explore sitename={sitename} />
           // </Wrapper>
         ),
         errorElement: <ErrorCatching />,
@@ -97,7 +97,7 @@ const router = createBrowserRouter([
         loader: dataLoader,
         element: (
           // <Wrapper>
-            <MyPosts sitename={sitename} />
+          <MyPosts sitename={sitename} />
           // </Wrapper>
         ),
         errorElement: <ErrorCatching />,
@@ -111,7 +111,7 @@ const router = createBrowserRouter([
         path: "/notifications",
         element: (
           // <Wrapper>
-            <Notifications />
+          <Notifications />
           // </Wrapper>
         ),
         errorElement: <ErrorCatching />,

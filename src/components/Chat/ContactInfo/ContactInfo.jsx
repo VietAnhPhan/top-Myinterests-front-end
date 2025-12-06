@@ -47,7 +47,7 @@ const ContactInfo = ({ currentContact }) => {
 
     async function fetchFollowRequest() {
       if (active) {
-        const followRequest = await api.getFollowRequest(
+        const followRequest = await api.follow.getFollowRequest(
           userContext.id,
           currentContact.id
         );

@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { UserContext } from "../../../Context";
-import api from "../../../api";
 import Avatar from "../../Avatar";
+import useAPI from "../../../hooks/useAPI";
 
 const ContactSearchList = ({ contacts }) => {
   const userContext = useContext(UserContext);
+  const api = useAPI();
 
   async function handleSelect(contact) {
     const currentConversation = await api.getCurrentConversation([

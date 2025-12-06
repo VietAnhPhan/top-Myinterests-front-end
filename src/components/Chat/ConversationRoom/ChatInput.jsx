@@ -4,9 +4,11 @@ import {
   SupabaseContext,
   UserContext,
 } from "../../../Context";
-import api from "../../../api";
+
+import useAPI from "../../../hooks/useAPI";
 
 const ChatInput = () => {
+  const api = useAPI();
   const userContext = useContext(UserContext);
   const conversationContext = useContext(ConversationContext);
 

@@ -1,4 +1,4 @@
-function usePost(serverURL, getToken) {
+function postAPI(serverURL, getToken) {
   return {
     getPosts: async () => {
       try {
@@ -177,4 +177,4 @@ function usePost(serverURL, getToken) {
   };
 }
 
-export default usePost;
+export default postAPI;
