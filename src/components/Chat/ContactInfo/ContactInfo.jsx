@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../Context";
-import Avatar from "../../Avatar";
+import Avatar from "../../Avatar/Avatar";
 import {
   UserMinus,
   UserRoundPlus,
@@ -23,7 +23,9 @@ const ContactInfo = ({ currentContact }) => {
   useEffect(() => {
     async function fetchInvitations() {
       if (active) {
-        const invitation = await api.friendRequest.getInvitation(currentContact.id);
+        const invitation = await api.friendRequest.getInvitation(
+          currentContact.id
+        );
 
         if (invitation && invitation.status === "pending") {
           setrequestStatus("pending");

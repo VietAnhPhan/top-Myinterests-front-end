@@ -1,6 +1,6 @@
 import api from "../../../api";
 import styles from "../../../Button.module.css";
-import Avatar from "../../Avatar";
+import Avatar from "../../Avatar/Avatar";
 
 const ReceivingFriendRequest = ({ receivingRequests }) => {
   async function handleAccept(id) {

@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import api from "../../api";
 import Post from "../Post/Post";
 import { HeaderContext } from "../../Context";
-import { Loading } from "../Utilities/Utilities";
+import { Loading } from "../utilities/Utilities";
 import useTitle from "../../hooks/useTitle";
 import useAPI from "../../hooks/useAPI";
 

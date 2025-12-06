@@ -1,6 +1,6 @@
 import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
-import Avatar from "../Avatar";
-import { DateTimeString } from "../Utilities/Utilities";
+import Avatar from "../Avatar/Avatar";
+import { DateTimeString } from "../utilities/Utilities";
 
 function LikeNotification(props) {
   return (

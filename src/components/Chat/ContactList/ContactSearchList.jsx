@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { UserContext } from "../../../Context";
-import Avatar from "../../Avatar";
+import Avatar from "../../Avatar/Avatar";
 import useAPI from "../../../hooks/useAPI";
 
 const ContactSearchList = ({ contacts }) => {

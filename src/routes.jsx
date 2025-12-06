@@ -14,9 +14,9 @@ import Search from "./components/Search/Search";
 import Explore from "./components/Explore/Explore";
 import MyPosts from "./components/Post/MyPosts";
 import FriendList from "./components/FriendList";
-import { ErrorCatching } from "./components/Utilities/Utilities";
+import { ErrorCatching } from "./components/utilities/Utilities";
 import Notifications from "./components/Notification/Notifications";
-import HydrationLoader from "./components/HydrationLoader";
+import HydrationLoader from "./components/utilities/loader/HydrationLoader";
 
 const sitename = "Gotoplaces";
 

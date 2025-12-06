@@ -1,11 +1,11 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import Heading1 from "../Heading/Heading1";
-import { ContentWrapper} from "../Utilities/Utilities";
+import { ContentWrapper } from "../utilities/Utilities";
 import Post from "./Post";
-import Avatar from "../Avatar";
+import Avatar from "../Avatar/Avatar";
 import { Button } from "../Button";
 import AddPhotoAlternateOutlinedIcon from "@mui/icons-material/AddPhotoAlternateOutlined";
-import { WarningToast } from "../Toast";
+import { WarningToast } from "../utilities/toast/Toast";
 import { HeaderContext, SupabaseContext, UserContext } from "../../Context";
 import useTitle from "../../hooks/useTitle";
 import useAPI from "../../hooks/useAPI";
@@ -67,9 +67,13 @@ function MyPosts() {
     for (const selectedPhoto of selectedPhotos) {
       const { data, error } = await supabaseContext.storage
         .from("posts")
-        .upload(`${userContext.username}/${selectedPhoto.name}`, selectedPhoto, {
-          upsert: true,
-        });
+        .upload(
+          `${userContext.username}/${selectedPhoto.name}`,
+          selectedPhoto,
+          {
+            upsert: true,
+          }
+        );
 
       if (data) {
         postMedias.push({

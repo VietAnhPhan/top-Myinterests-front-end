@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import Heading1 from "../Heading/Heading1";
 import LikeNotification from "./LikeNotification";
-import { ContentWrapper } from "../Utilities/Utilities";
+import { ContentWrapper } from "../utilities/Utilities";
 import { HeaderContext } from "../../Context";
 import useTitle from "../../hooks/useTitle";
 import useAPI from "../../hooks/useAPI";

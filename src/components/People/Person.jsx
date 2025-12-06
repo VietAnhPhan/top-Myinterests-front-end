@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { Button } from "../Button";
-import { ContentWrapper } from "../Utilities/Utilities";
+import { ContentWrapper } from "../utilities/Utilities";
 import { UserContext } from "../../Context";
 import useAPI from "../../hooks/useAPI";
 

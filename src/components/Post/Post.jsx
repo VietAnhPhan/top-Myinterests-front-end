@@ -2,9 +2,9 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import { useContext, useEffect, useRef, useState } from "react";
-import Avatar from "../Avatar";
+import Avatar from "../Avatar/Avatar";
 import { UserContext } from "../../Context";
-import { DateTimeString } from "../Utilities/Utilities";
+import { DateTimeString } from "../utilities/Utilities";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import useAPI from "../../hooks/useAPI";
 

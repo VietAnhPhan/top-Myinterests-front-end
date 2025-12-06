@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { HeaderContext } from "../../Context";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import Heading1 from "../Heading/Heading1";
-import { ContentWrapper, ContentWrapperNoBorder } from "../Utilities/Utilities";
+import { ContentWrapper, ContentWrapperNoBorder } from "../utilities/Utilities";
 import People from "../People/Person";
 import { Button } from "../Button";
 import Post from "../Post/Post";

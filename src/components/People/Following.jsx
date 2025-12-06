@@ -1,5 +1,5 @@
 import { Button } from "../Button";
-import { ContentWrapper } from "../Utilities/Utilities";
+import { ContentWrapper } from "../utilities/Utilities";
 
 function Following(props) {
   return (

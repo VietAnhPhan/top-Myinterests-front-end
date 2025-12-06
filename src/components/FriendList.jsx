@@ -1,6 +1,6 @@
 import Heading1 from "./Heading/Heading1";
 import { useContext, useEffect, useState } from "react";
-import { ContentWrapper } from "./Utilities/Utilities";
+import { ContentWrapper } from "./utilities/Utilities";
 import { HeaderContext, UserContext } from "../Context";
 import Following from "./People/Following";
 import useTitle from "../hooks/useTitle";
