@@ -3,6 +3,7 @@ import styles from "../../../Button.module.css";
 import Avatar from "../../Avatar";
 
 const SentFriendRequest = ({ sentRequests }) => {
+  
   async function handleRevoke(id) {
     await api.revokeInvitation(id);
   }

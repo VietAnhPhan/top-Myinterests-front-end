@@ -9,10 +9,12 @@ import {
   UserRoundMinus,
 } from "lucide-react";
 import styles from "./ContactInfo.module.css";
-import api from "../../../api";
-import DoneOutlinedIcon from '@mui/icons-material/DoneOutlined';
+
+import DoneOutlinedIcon from "@mui/icons-material/DoneOutlined";
+import useAPI from "../../../hooks/useAPI";
 
 const ContactInfo = ({ currentContact }) => {
+  const api = useAPI();
   const userContext = useContext(UserContext);
   const [requestStatus, setrequestStatus] = useState("");
   const [friendRequest, setFriendRequest] = useState(null);
@@ -21,7 +23,7 @@ const ContactInfo = ({ currentContact }) => {
   useEffect(() => {
     async function fetchInvitations() {
       if (active) {
-        const invitation = await api.getInvitation(currentContact.id);
+        const invitation = await api.friendRequest.getInvitation(currentContact.id);
 
         if (invitation && invitation.status === "pending") {
           setrequestStatus("pending");
@@ -68,29 +70,29 @@ const ContactInfo = ({ currentContact }) => {
   }, [currentContact.id, userContext.id]);
 
   async function handleSent() {
-    await api.sendInvitation(currentContact.id);
+    await api.friendRequest.sendInvitation(currentContact.id);
     const invitation = await api.getInvitation(currentContact.id);
     setrequestStatus("pending");
     setFriendRequest(invitation);
   }
 
   async function handleRevoke() {
-    await api.revokeInvitation(friendRequest.id);
+    await api.friendRequest.revokeInvitation(friendRequest.id);
     setrequestStatus("");
   }
 
   async function handleAccept() {
-    await api.acceptInvitation(friendRequest.id);
+    await api.friendRequest.acceptInvitation(friendRequest.id);
     setrequestStatus("accepted");
   }
 
   async function handleReject() {
-    await api.rejectInvitation(friendRequest.id);
+    await api.friendRequest.rejectInvitation(friendRequest.id);
     setrequestStatus("");
   }
 
   async function handleUnfriend() {
-    await api.unfriend(friendRequest.id, currentContact.id);
+    await api.friendRequest.unfriend(friendRequest.id, currentContact.id);
     setrequestStatus("");
   }
 
@@ -166,7 +168,7 @@ const ContactInfo = ({ currentContact }) => {
               className="flex gap-3 font-semibold bg-gray-300 w-full py-1 px-2 rounded-lg"
             >
               <DoneOutlinedIcon className={styles.icon} />
-              <p >Following</p>
+              <p>Following</p>
             </div>
           )}
         </div>
