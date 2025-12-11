@@ -9,10 +9,12 @@ import { WarningToast } from "../utilities/toast/Toast";
 import { HeaderContext, SupabaseContext, UserContext } from "../../Context";
 import useTitle from "../../hooks/useTitle";
 import useAPI from "../../hooks/useAPI";
+import { useLoaderData } from "react-router";
 
 function MyPosts() {
   useTitle("Posts");
-  const api = useAPI();
+  const user = useLoaderData();
+  const api = useAPI(user.token);
   const [posts, setPosts] = useState([]);
   const userContext = useContext(UserContext);
   const previewPhotos = useRef(null);

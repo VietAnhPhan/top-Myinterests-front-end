@@ -3,24 +3,25 @@ import {
   AvatarContext,
   HeaderContext,
   SupabaseContext,
-  UserContext,
 } from "../../Context";
 import Heading1 from "../Heading/Heading1";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import useTitle from "../../hooks/useTitle";
 import useAPI from "../../hooks/useAPI";
+import { useLoaderData } from "react-router";
 
 const Profile = () => {
   useTitle("Profile");
-  const api = useAPI();
-  const userContext = useContext(UserContext);
+  const user = useLoaderData();
+  const api = useAPI(user.token);
+  // const userContext = useContext(UserContext);
 
   const [password, setPassword] = useState("");
   const [repeatPassword, setrepeatPassword] = useState("");
-  const [fullname, setFullname] = useState(userContext.fullname);
-  const [about, setAbout] = useState(userContext.about);
-  const [phone, setPhone] = useState(userContext.phone);
+  const [fullname, setFullname] = useState(user.fullname);
+  const [about, setAbout] = useState(user.about);
+  const [phone, setPhone] = useState(user.phone);
 
   const [isUpdate, setIsupdate] = useState(false);
   const [result, setResult] = useState("");
@@ -50,7 +51,7 @@ const Profile = () => {
       const { data, error } = await supabaseContext.storage
         .from("avatars")
         .upload(
-          `${userContext.username}/${uploadeAvatar.name}`,
+          `${user.username}/${uploadeAvatar.name}`,
           uploadeAvatar,
           {
             upsert: true,
@@ -86,7 +87,7 @@ const Profile = () => {
       avatarPath: formData.get("avatarPath"),
     };
 
-    const result = await api.user.updateProfile(userContext.id, userData);
+    const result = await api.user.updateProfile(user.id, userData);
 
     if (result.error) {
       setIsupdate(false);
@@ -152,10 +153,10 @@ const Profile = () => {
             <div className="flex">
               <label htmlFor="uploaded-avatar">
                 <div className="w-30 h-30">
-                  {userContext.avatarPath ? (
+                  {user.avatarPath ? (
                     <img
                       className="w-full h-full object-cover object-top rounded-[50%]"
-                      src={`${userContext.avatarPath}`}
+                      src={`${user.avatarPath}`}
                       ref={avatarInputRef}
                     ></img>
                   ) : (
@@ -254,7 +255,7 @@ const Profile = () => {
                     name="username"
                     id="username"
                     className="p-1.5 w-full "
-                    defaultValue={userContext.username}
+                    defaultValue={user.username}
                   />
                 </div>
               </div>
@@ -267,7 +268,7 @@ const Profile = () => {
                   name="email"
                   id="email"
                   className="p-1.5 w-full "
-                  defaultValue={userContext.email}
+                  defaultValue={user.email}
                   disabled
                 />
               </div>

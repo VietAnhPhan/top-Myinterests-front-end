@@ -9,7 +9,6 @@ import Setting from "./components/Setting";
 import Friend from "./components/Chat/Friend/Friend";
 import Wrapper from "./components/Wrapper";
 import api from "./api";
-import Home from "./components/Home/Home";
 import Search from "./components/Search/Search";
 import Explore from "./components/Explore/Explore";
 import MyPosts from "./components/Post/MyPosts";
@@ -17,24 +16,25 @@ import FriendList from "./components/FriendList";
 import { ErrorCatching } from "./components/utilities/Utilities";
 import Notifications from "./components/Notification/Notifications";
 import HydrationLoader from "./components/utilities/loader/HydrationLoader";
+import { Home } from "./pages/Home";
 
 const sitename = "Gotoplaces";
 
 const router = createBrowserRouter([
   {
     path: "",
-    middleware: [authMiddleware],
-    loader: dataLoader,
+    loader: getUser,
     element: <App></App>,
     hydrateFallbackElement: <HydrationLoader />,
     children: [
       {
         path: "/",
-        element: <Home sitename={sitename} />,
+        element: <Home />,
         errorElement: <ErrorCatching />,
       },
       {
         path: "/chats",
+        middleware: [authMiddleware],
         loader: chatLoader,
         element: <Chat sitename={sitename} />,
         errorElement: <ErrorCatching />,
@@ -42,6 +42,8 @@ const router = createBrowserRouter([
 
       {
         path: "/profile",
+        middleware: [authMiddleware],
+        loader: getUser,
         element: <Profile sitename={sitename} />,
         errorElement: <ErrorCatching />,
       },
@@ -51,7 +53,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/friends",
-        loader: friendsLoader,
+        middleware: [authMiddleware],
+        loader: getUser,
         element: <FriendList sitename={sitename} />,
       },
       {
@@ -61,21 +64,28 @@ const router = createBrowserRouter([
       },
       {
         path: "/explore",
+        middleware: [authMiddleware],
+        loader: getUser,
         element: <Explore sitename={sitename} />,
         errorElement: <ErrorCatching />,
       },
       {
         path: "/posts",
+        middleware: [authMiddleware],
+        loader: getUser,
         element: <MyPosts sitename={sitename} />,
         errorElement: <ErrorCatching />,
       },
       {
         path: "/notifications",
+        middleware: [authMiddleware],
+        loader: getUser,
         element: <Notifications />,
         errorElement: <ErrorCatching />,
       },
     ],
   },
+
   {
     path: "/login",
     loader: hasLogin,
@@ -107,7 +117,7 @@ async function authMiddleware({ context }) {
   context.set(UserContext, user);
 }
 
-function dataLoader({ context }) {
+function getUser({ context }) {
   const user = context.get(UserContext);
 
   return user;

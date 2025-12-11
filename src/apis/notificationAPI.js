@@ -1,4 +1,4 @@
-function notificationAPI(serverURL, getToken) {
+function notificationAPI(serverURL, apiToken) {
   return {
     sendNotification: async (currentUserId, type) => {
       try {
@@ -7,7 +7,7 @@ function notificationAPI(serverURL, getToken) {
           body: JSON.stringify({ currentUserId, type }),
           headers: {
             "Content-type": "application/json",
-            Authorization: `bearer ${getToken()}`,
+            Authorization: `bearer ${apiToken}`,
           },
         });
 
@@ -28,7 +28,7 @@ function notificationAPI(serverURL, getToken) {
           method: "GET",
 
           headers: {
-            Authorization: `bearer ${getToken()}`,
+            Authorization: `bearer ${apiToken}`,
           },
         });
 

@@ -19,13 +19,13 @@ const supabase = createClient(
 
 function App() {
   const loaderData = useLoaderData();
-  const [avatarPath, setavatarPath] = useState(loaderData.avatarPath);
+  // const [avatarPath, setavatarPath] = useState(loaderData.avatarPath);
   const [activeMenuItem, setactiveMenuItem] = useState("home");
 
   return (
     <>
-      <UserContext value={loaderData}>
-        <AvatarContext value={{ avatarPath, setavatarPath }}>
+      {/* <UserContext value={loaderData}>
+        <AvatarContext value={{ avatarPath, setavatarPath }}> */}
           <HeaderContext value={{ activeMenuItem, setactiveMenuItem }}>
             <div className="flex flex-col-reverse md:flex-row h-full dark:bg-slate-900 bg-gradient-to-br from-purple-100 via-pink-50 to-blue-100">
               <Header loaderData={loaderData}></Header>
@@ -53,8 +53,8 @@ function App() {
               </SupabaseContext>
             </div>
           </HeaderContext>
-        </AvatarContext>
-      </UserContext>
+        {/* </AvatarContext>
+      </UserContext> */}
     </>
   );
 }

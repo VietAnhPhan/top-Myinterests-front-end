@@ -4,7 +4,7 @@ import { HeaderContext } from "../Context";
 import { Settings } from "lucide-react";
 import useTitle from "../hooks/useTitle";
 
-const Setting = (props) => {
+const Setting = () => {
   useTitle("Settings");
   const navigate = useNavigate();
 

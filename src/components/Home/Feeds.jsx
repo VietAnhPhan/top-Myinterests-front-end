@@ -6,18 +6,18 @@ import { Loading } from "../utilities/Utilities";
 import useTitle from "../../hooks/useTitle";
 import useAPI from "../../hooks/useAPI";
 
-function Home() {
+function Feeds() {
   useTitle("Home");
   const api = useAPI();
   const [posts, setPosts] = useState([]);
 
-  const headerContext = useContext(HeaderContext);
+  // const headerContext = useContext(HeaderContext);
 
   useEffect(() => {
     async function fetchData() {
       const posts = await api.post.getPosts();
       setPosts(posts);
-      headerContext.setactiveMenuItem("home");
+      // headerContext.setactiveMenuItem("home");
     }
 
     fetchData();
@@ -34,4 +34,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Feeds;

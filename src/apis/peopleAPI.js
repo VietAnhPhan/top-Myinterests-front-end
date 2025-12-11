@@ -1,10 +1,10 @@
-function peopleAPI(serverURL, getToken) {
+function peopleAPI(serverURL, apiToken) {
   return {
     getSearchPeople: async (search) => {
       try {
         const response = await fetch(`${serverURL}/users?search=${search}`, {
           method: "GET",
-          headers: { Authorization: `bearer ${getToken()}` },
+          headers: { Authorization: `bearer ${apiToken}` },
         });
 
         if (!response.ok) {
@@ -23,7 +23,7 @@ function peopleAPI(serverURL, getToken) {
       try {
         const response = await fetch(`${serverURL}/users?top_users=true`, {
           method: "GET",
-          headers: { Authorization: `bearer ${getToken()}` },
+          headers: { Authorization: `bearer ${apiToken}` },
         });
 
         if (!response.ok) {

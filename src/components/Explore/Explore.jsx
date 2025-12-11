@@ -11,10 +11,12 @@ import TagOutlinedIcon from "@mui/icons-material/TagOutlined";
 import AutoAwesomeOutlinedIcon from "@mui/icons-material/AutoAwesomeOutlined";
 import useTitle from "../../hooks/useTitle";
 import useAPI from "../../hooks/useAPI";
+import { useLoaderData } from "react-router";
 
 function Explore() {
   useTitle("Explore");
-  const api = useAPI();
+  const user = useLoaderData();
+  const api = useAPI(user.token);
   const headerContext = useContext(HeaderContext);
   const inputRef = useRef(null);
   const [people, setPeople] = useState([]);

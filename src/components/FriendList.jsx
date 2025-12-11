@@ -5,10 +5,12 @@ import { HeaderContext, UserContext } from "../Context";
 import Following from "./People/Following";
 import useTitle from "../hooks/useTitle";
 import useAPI from "../hooks/useAPI";
+import { useLoaderData } from "react-router";
 
 function FriendList() {
   useTitle("Friends");
-  const api = useAPI();
+  const user = useLoaderData();
+  const api = useAPI(user.token);
   const [activeTab, setActiveTab] = useState("Followers");
   const [followings, setFollowings] = useState([]);
   const [followers, setFollowers] = useState([]);

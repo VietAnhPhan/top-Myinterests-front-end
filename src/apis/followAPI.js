@@ -1,4 +1,4 @@
-function followAPI(serverURL, getToken) {
+function followAPI(serverURL, apiToken) {
   return {
     followPerson: async (followerId, followeeId) => {
       try {
@@ -7,7 +7,7 @@ function followAPI(serverURL, getToken) {
           body: JSON.stringify({ followerId, followeeId }),
           headers: {
             "Content-type": "application/json",
-            Authorization: `bearer ${getToken()}`,
+            Authorization: `bearer ${apiToken}`,
           },
         });
 
@@ -30,7 +30,7 @@ function followAPI(serverURL, getToken) {
             method: "GET",
 
             headers: {
-              Authorization: `bearer ${getToken()}`,
+              Authorization: `bearer ${apiToken}`,
             },
           }
         );
@@ -55,7 +55,7 @@ function followAPI(serverURL, getToken) {
 
             headers: {
               "Content-type": "application/json",
-              Authorization: `bearer ${getToken()}`,
+              Authorization: `bearer ${apiToken}`,
             },
           }
         );
@@ -77,7 +77,7 @@ function followAPI(serverURL, getToken) {
           {
             method: "GET",
             headers: {
-              Authorization: `bearer ${getToken()}`,
+              Authorization: `bearer ${apiToken}`,
             },
           }
         );

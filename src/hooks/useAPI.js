@@ -13,22 +13,22 @@ const serverURL = import.meta.env.PROD
   ? import.meta.env.VITE_SERVER_DOMAIN
   : import.meta.env.VITE_LOCAL_HOST;
 
-const useAPI = () => {
-  function getToken() {
-    const access = JSON.parse(localStorage.getItem("myinterests_app_access"));
-    return access ? access.token : "";
-  }
+const useAPI = (apiToken) => {
+  // function getToken() {
+  //   const access = JSON.parse(localStorage.getItem("myinterests_app_access"));
+  //   return access ? access.token : "";
+  // }
   return {
-    conversation: conversationAPI(serverURL, getToken),
-    people: peopleAPI(serverURL, getToken),
-    user: userAPI(serverURL, getToken),
-    friendRequest: friendRequestAPI(serverURL, getToken),
+    conversation: conversationAPI(serverURL, apiToken),
+    people: peopleAPI(serverURL, apiToken),
+    user: userAPI(serverURL, apiToken),
+    friendRequest: friendRequestAPI(serverURL, apiToken),
     auth: authAPI(serverURL),
-    friend: friendAPI(serverURL, getToken),
-    message: messageAPI(serverURL, getToken),
-    post: postAPI(serverURL, getToken),
-    follow: followAPI(serverURL, getToken),
-    notification: notificationAPI(serverURL, getToken),
+    friend: friendAPI(serverURL, apiToken),
+    message: messageAPI(serverURL, apiToken),
+    post: postAPI(serverURL, apiToken),
+    follow: followAPI(serverURL, apiToken),
+    notification: notificationAPI(serverURL, apiToken),
   };
 };
 

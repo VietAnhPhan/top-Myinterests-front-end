@@ -5,10 +5,12 @@ import { ContentWrapper } from "../utilities/Utilities";
 import { HeaderContext } from "../../Context";
 import useTitle from "../../hooks/useTitle";
 import useAPI from "../../hooks/useAPI";
+import { useLoaderData } from "react-router";
 
 function Notifications() {
   useTitle("Notifications");
-  const api = useAPI();
+  const user = useLoaderData();
+  const api = useAPI(user.token);
   const [notifications, setNotifications] = useState([]);
   const headerContext = useContext(HeaderContext);
 

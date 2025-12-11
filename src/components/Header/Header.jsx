@@ -13,8 +13,7 @@ import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
 
-export const Header = ({ loaderData }) => {
-  const avatarContext = useContext(AvatarContext);
+export const Header = ({ loaderData = null }) => {
   const headerContext = useContext(HeaderContext);
 
   return (
@@ -143,12 +142,12 @@ export const Header = ({ loaderData }) => {
                     : ""
                 } flex items-center gap-x-3`}
               >
-                {loaderData.avatarPath ? (
+                {loaderData && loaderData.avatarPath ? (
                   <div className="w-10 h-10">
                     <img
                       className="rounded-[50%] object-cover object-top w-full h-full"
-                      src={`${avatarContext.avatarPath}`}
-                      alt={`${loaderData.name}'s avatar`}
+                      src={`${loaderData.avatarPath}`}
+                      alt={`${loaderData && loaderData.name}'s avatar`}
                     />
                   </div>
                 ) : (
@@ -170,9 +169,9 @@ export const Header = ({ loaderData }) => {
                 )}
 
                 <div>
-                  <p>{loaderData.fullname}</p>
+                  <p>{loaderData && loaderData.fullname}</p>
                   <p className="text-xs text-gray-500">
-                    @{loaderData.username}
+                    {loaderData && <>@{loaderData.username}</>}
                   </p>
                 </div>
               </div>

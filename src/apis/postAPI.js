@@ -1,12 +1,12 @@
-function postAPI(serverURL, getToken) {
+function postAPI(serverURL, apiToken) {
   return {
     getPosts: async () => {
       try {
         const response = await fetch(`${serverURL}/posts`, {
           method: "GET",
-          headers: {
-            Authorization: `bearer ${getToken()}`,
-          },
+          // headers: {
+          //   Authorization: `bearer ${apiToken}`,
+          // },
         });
 
         if (!response.ok) {
@@ -23,7 +23,7 @@ function postAPI(serverURL, getToken) {
       try {
         const response = await fetch(`${serverURL}/posts/users/${username}`, {
           method: "GET",
-          headers: { Authorization: `bearer ${getToken()}` },
+          headers: { Authorization: `bearer ${apiToken}` },
         });
 
         if (!response.ok) {
@@ -41,7 +41,7 @@ function postAPI(serverURL, getToken) {
       try {
         const response = await fetch(`${serverURL}/posts?trending=true`, {
           method: "GET",
-          headers: { Authorization: `bearer ${getToken()}` },
+          headers: { Authorization: `bearer ${apiToken}` },
         });
 
         if (!response.ok) {
@@ -59,7 +59,7 @@ function postAPI(serverURL, getToken) {
       try {
         const response = await fetch(`${serverURL}/posts?search=${search}`, {
           method: "GET",
-          headers: { Authorization: `bearer ${getToken()}` },
+          headers: { Authorization: `bearer ${apiToken}` },
         });
 
         if (!response.ok) {
@@ -80,7 +80,7 @@ function postAPI(serverURL, getToken) {
           body: JSON.stringify({ body }),
           headers: {
             "Content-type": "application/json",
-            Authorization: `bearer ${getToken()}`,
+            Authorization: `bearer ${apiToken}`,
           },
         });
 
@@ -101,7 +101,7 @@ function postAPI(serverURL, getToken) {
           body: JSON.stringify({ postMedias }),
           headers: {
             "Content-type": "application/json",
-            Authorization: `bearer ${getToken()}`,
+            Authorization: `bearer ${apiToken}`,
           },
         });
         const result = await rs.json();
@@ -117,7 +117,7 @@ function postAPI(serverURL, getToken) {
           body: JSON.stringify({ postId }),
           headers: {
             "Content-type": "application/json",
-            Authorization: `bearer ${getToken()}`,
+            Authorization: `bearer ${apiToken}`,
           },
         });
 
@@ -138,7 +138,7 @@ function postAPI(serverURL, getToken) {
           method: "GET",
 
           headers: {
-            Authorization: `bearer ${getToken()}`,
+            Authorization: `bearer ${apiToken}`,
           },
         });
 
@@ -160,7 +160,7 @@ function postAPI(serverURL, getToken) {
           body: JSON.stringify({ postId, comment }),
           headers: {
             "Content-type": "application/json",
-            Authorization: `bearer ${getToken()}`,
+            Authorization: `bearer ${apiToken}`,
           },
         });
 
