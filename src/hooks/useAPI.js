@@ -1,13 +1,13 @@
-import authAPI from "../api/authAPI";
-import conversationAPI from "../api/conversationAPI";
-import followAPI from "../api/followAPI";
-import friendAPI from "../api/friendAPI";
-import friendRequestAPI from "../api/friendRequestAPI";
-import messageAPI from "../api/messageAPI";
-import notificationAPI from "../api/notificationAPI";
-import peopleAPI from "../api/peopleAPI";
-import postAPI from "../api/postAPI";
-import userAPI from "../api/userAPI";
+import authAPI from "../apis/authAPI";
+import conversationAPI from "../apis/conversationAPI";
+import followAPI from "../apis/followAPI";
+import friendAPI from "../apis/friendAPI";
+import friendRequestAPI from "../apis/friendRequestAPI";
+import messageAPI from "../apis/messageAPI";
+import notificationAPI from "../apis/notificationAPI";
+import peopleAPI from "../apis/peopleAPI";
+import postAPI from "../apis/postAPI";
+import userAPI from "../apis/userAPI";
 
 const serverURL = import.meta.env.PROD
   ? import.meta.env.VITE_SERVER_DOMAIN
