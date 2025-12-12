@@ -3,5 +3,9 @@ export default function useUsername() {
     localStorage.getItem("myinterests_app_access")
   );
 
-  return authStorage.username ? authStorage.username : "";
+  if (authStorage && authStorage.username) {
+    return authStorage.username;
+  }
+
+  return "";
 }
