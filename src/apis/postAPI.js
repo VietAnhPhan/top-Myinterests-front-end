@@ -1,4 +1,30 @@
 function postAPI(serverURL, apiToken) {
+  // Unauthenticated
+  if (!apiToken) {
+    return {
+      getPosts: async () => {
+        try {
+          const response = await fetch(`${serverURL}/posts`, {
+            method: "GET",
+            // headers: {
+            //   Authorization: `bearer ${apiToken}`,
+            // },
+          });
+
+          if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+          }
+
+          const result = await response.json();
+          return result;
+        } catch (err) {
+          console.log(err);
+        }
+      },
+    };
+  }
+  
+  // Autheticated
   return {
     getPosts: async () => {
       try {
@@ -73,7 +99,7 @@ function postAPI(serverURL, apiToken) {
         console.error(err.message);
       }
     },
-     createPost: async (body) => {
+    createPost: async (body) => {
       try {
         const response = await fetch(`${serverURL}/posts`, {
           method: "POST",
