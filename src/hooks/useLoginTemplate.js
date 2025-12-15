@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function useLoginTemplate() {
-  const [template, setTemplate] = useState("1-column");
-  return {
-    template,
-    setTemplate,
-  };
+  const [template, setTemplate] = useState("");
+
+  useEffect(() => {
+    setTemplate("1-column");
+  },[]);
+
+  return template;
 }

@@ -5,33 +5,33 @@ import { Link } from "react-router";
 
 export function OneColLogin(props) {
   return (
-    <div className="flex items-center h-full bg-gradient-to-br from-blue-300 to-pink-300">
-      <div className="w-xl mx-auto bg-white py-12 px-10 rounded-2xl">
+    <div className="flex items-center h-full bg-[#f5f5f5]">
+      <div className="w-xl mx-auto py-12 px-10 rounded-2xl">
         {/* Logo */}
-        <div className="flex justify-center items-center gap-x-4 px-5 pb-5">
-          <div
-            className={`w-12 h-12 bg-gradient-to-br from-purple-500 via-pink-500 to-blue-500 rounded-xl flex items-center justify-center shadow-lg`}
+        <div className="flex justify-center items-center gap-x-4 px-5">
+          {/* <div
+            className={`w-12 h-12 bg-gradient-to-br rounded-xl flex items-center justify-center shadow-lg`}
           >
             <span className="text-white text-xl">✨</span>
-          </div>
-          <p className="text-5xl bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">
-            Gotoplaces
+          </div> */}
+          <p className="text-5xl">
+            Please sign in
           </p>
         </div>
         <div className="flex items-center gap-x-10 h-full justify-center">
           <div className="rounded-md xl:col-span-1 xl:col-start-3 flex-1">
-            <div className="flex flex-col gap-2.5">
+            {/* <div className="flex flex-col gap-2.5">
               <p className="text-gray-500 text-center">
                 Sign in to your account to continue
               </p>
-            </div>
-            <form action={props.login} className="flex flex-col">
+            </div> */}
+            <form action={props.login} className="flex flex-col mt-5">
               <div className="flex flex-col">
-                <label htmlFor="username" className="text-zinc-500">
+                <label htmlFor="username">
                   Username:
                 </label>
                 <div className="flex">
-                  <span className="flex items-center h-[100%] border-1 border-r-0 rounded-l-md border-zinc-400 bg-icon-box">
+                  {/* <span className="flex items-center h-[100%] border-1 border-r-0 rounded-l-md border-zinc-400 bg-icon-box">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -43,22 +43,22 @@ export function OneColLogin(props) {
                         clipRule="evenodd"
                       />
                     </svg>
-                  </span>
+                  </span> */}
                   <input
                     type="text"
                     name="username"
                     id="username"
-                    className="p-1.5 w-full"
+                    className="py-4 px-3 w-full"
                     required
                   />
                 </div>
               </div>
               <div className="flex flex-col mt-3">
-                <label htmlFor="password" className="text-zinc-500">
+                <label htmlFor="password">
                   Password:
                 </label>
                 <div className="flex">
-                  <span className="flex items-center h-[100%] border-1 border-r-0 rounded-l-md border-zinc-400 bg-icon-box">
+                  {/* <span className="flex items-center h-[100%] border-1 border-r-0 rounded-l-md border-zinc-400 bg-icon-box">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -71,12 +71,12 @@ export function OneColLogin(props) {
                         clipRule="evenodd"
                       />
                     </svg>
-                  </span>
+                  </span> */}
                   <input
                     type="password"
                     name="password"
                     id="password"
-                    className="p-1.5 w-full"
+                    className="py-4 px-3 w-full"
                     required
                     minLength={8}
                     maxLength={30}
@@ -88,7 +88,7 @@ export function OneColLogin(props) {
               )}
               <button
                 type="submit"
-                className="mt-5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 py-1.5 rounded-lg text-white hover:from-blue-700 hover:via-purple-700 hover:to-pink-700"
+                className="mt-5 bg-blue-500 text-white py-2 px-4 hover:bg-blue-600 font-medium text-xl"
               >
                 Sign in
               </button>
@@ -97,25 +97,25 @@ export function OneColLogin(props) {
               >
                 or
               </p>
-              <div className="flex flex-col gap-y-3 mt-5">
+              <div className="flex flex-col gap-y-5 mt-5">
                 <a
                   href="/login/guest"
-                  className="flex justify-center items-center gap-x-3 py-1.5 border border-gray-300 rounded-xl"
+                  className="flex justify-center items-center gap-x-3 py-1.5 border flex-1 text-xl"
                 >
-                  <AccountCircleOutlinedIcon /> Continue as guest
+                  <AccountCircleOutlinedIcon /> Guest
                 </a>
                 <a
                   href="/login/google"
-                  className="flex justify-center items-center gap-x-3 py-1.5 border border-gray-300 rounded-xl"
+                  className="flex justify-center items-center gap-x-3 py-1.5 border flex-1 text-xl"
                 >
-                  <GoogleIcon /> Continue with Google
+                  <GoogleIcon /> Google
                 </a>
                 <a
                   href="/login/github"
-                  className="flex justify-center items-center gap-x-3 py-1.5 border border-gray-300 rounded-xl"
+                  className="flex justify-center items-center gap-x-3 py-1.5 border flex-1 text-xl"
                   target="_blank"
                 >
-                  <GitHubIcon /> Continue with Github
+                  <GitHubIcon /> Github
                 </a>
               </div>
               <div className="flex justify-center mt-5 gap-x-1">

@@ -1,17 +1,16 @@
 import styles from "./Login.module.css";
 import { ErrorBoundary } from "react-error-boundary";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router";
-// import api from "../../api";
-import useAPI from "../../hooks/useAPI";
 import { useLoginTemplate } from "../../hooks/useLoginTemplate";
 import { OneColLogin } from "./OneColLogin";
 import { TwoColsLogin } from "./TwoColsLogin";
+import useGuestAPI from "../../hooks/useGuestAPI";
 
 function Login(props) {
   const [authResults, setAuthResults] = useState("");
-  const api = useAPI();
-  const { template, setTemplate } = useLoginTemplate();
+  const api = useGuestAPI();
+  const template = useLoginTemplate();
 
   let navigate = useNavigate();
 
@@ -21,6 +20,7 @@ function Login(props) {
 
     try {
       const result = await api.auth.login(username, password);
+
       if (result.info) {
         setAuthResults(result.info.message);
         return;
@@ -40,9 +40,9 @@ function Login(props) {
     }
   }
 
-  useEffect(() => {
-    setTemplate("2-columns");
-  }, []);
+  // useEffect(() => {
+  //   setTemplate("1-columns");
+  // }, []);
 
   return (
     <ErrorBoundary
