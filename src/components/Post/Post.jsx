@@ -1,12 +1,11 @@
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
-import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import { useContext, useEffect, useRef, useState } from "react";
 import Avatar from "../Avatar/Avatar";
 import { UserContext } from "../../Context";
 import { DateTimeString } from "../utilities/Utilities";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import useAPI from "../../hooks/useAPI";
+import PostInteraction from "./PostInteraction";
+import { getDuration } from "../../helpers";
 
 function Post(props) {
   const api = useAPI();
@@ -14,6 +13,7 @@ function Post(props) {
   const userContext = useContext(UserContext);
   const [comments, setComments] = useState(props.post.Comment);
   const commentRef = useRef(null);
+  const [isCommentsOpened, setCommentsOpened] = useState(false);
   const isLiked = checkIsLiked(props.post.Like, userContext.id);
 
   useEffect(() => {
@@ -33,7 +33,11 @@ function Post(props) {
   function handleOpenComment() {
     if (!commentRef.current.classList.contains("hidden")) {
       commentRef.current.classList.add("hidden");
-    } else commentRef.current.classList.remove("hidden");
+      setCommentsOpened(false);
+    } else {
+      commentRef.current.classList.remove("hidden");
+      setCommentsOpened(true);
+    }
   }
 
   async function handleSubmitComment(formData) {
@@ -46,71 +50,59 @@ function Post(props) {
 
   return (
     <>
-      <div className="hover:shadow-lg p-5 bg-white rounded-2xl hover:-translate-y-1 transition-all border border-gray-400">
-        <div className="flex">
-          <div className="flex flex-col gap-y-5 flex-1">
-            <div className="flex items-center">
-              <div className="flex gap-x-4">
-                {/* User avatar */}
-                <img
-                  src={props.author.avatarPath}
-                  alt={`${props.author.fullname}'s avatar`}
-                  width={60}
-                  className="rounded-full"
-                />
-                {/* User Info */}
-                <div>
-                  <p className="text-base font-normal">
+      <div className="first:rounded-t-4xl post p-5 bg-white border-t border-l border-r border-zinc-300">
+        <div className="flex flex-col gap-y-5 flex-1">
+          <div className="flex gap-x-3">
+            <div className="shrink-0">
+              {/* User avatar */}
+              <img
+                src={props.author.avatarPath}
+                alt={`${props.author.fullname}'s avatar`}
+                width={40}
+                className="rounded-full"
+              />
+            </div>
+
+            {/* Username & content*/}
+            <div className="flex flex-col">
+              <div>
+                {/* <p className="text-base font-normal">
                     {props.author.fullname}
+                  </p> */}
+                <div className="flex gap-x-3">
+                  <p className="font-semibold text-sm">
+                    {props.author.username}
                   </p>
-                  <p className="text-xs text-gray-500">
-                    @{props.author.username}
+                  {/* Posted date */}
+                  <p className="text-sm  shrink-0 text-gray-500 flex-1 self-start">
+                    {/* {new Date(props.post.createdAt).toDateString()} */}
+                    {getDuration(props.post.createdAt)}
                   </p>
                 </div>
               </div>
-              {/* Posted date */}
-              <p className="text-xs shrink-0 text-gray-600 flex-1 self-start text-right">
-                {new Date(props.post.createdAt).toDateString()}
+              {/* Post content */}
+              <p className="text-[15px] mt-1">
+                {props.post.body.slice(0, 146)}
               </p>
+
+              {/* Interaction */}
+              <PostInteraction
+                isLiked={isLiked}
+                handleLike={handleLike}
+                likeCount={likeCount}
+                handleOpenComment={handleOpenComment}
+                commentCount={props.post._count.Comment}
+              />
             </div>
-            {/* Post content */}
-            <p className="text-[15px]">{props.post.body.slice(0, 146)}</p>
-            {props.post.PostMedia &&
-              props.post.PostMedia.length > 0 &&
-              props.post.PostMedia.map((postMedia) => (
-                <img key={postMedia.id} src={postMedia.filePath}></img>
-              ))}
           </div>
+
+          {props.post.PostMedia &&
+            props.post.PostMedia.length > 0 &&
+            props.post.PostMedia.map((postMedia) => (
+              <img key={postMedia.id} src={postMedia.filePath}></img>
+            ))}
         </div>
 
-        {/* Interaction */}
-        <div className="flex items-center gap-5 pt-3 border-t border-purple-100 mt-5">
-          {!isLiked && (
-            <FavoriteBorderOutlinedIcon
-              className="hover:cursor-pointer hover:text-pink-700"
-              fontSize="small"
-              onClick={handleLike}
-            />
-          )}
-
-          {isLiked && (
-            <FavoriteIcon
-              className="hover:cursor-pointer text-pink-700"
-              fontSize="small"
-              onClick={handleLike}
-            />
-          )}
-
-          {likeCount}
-          {props.Like}
-          <ChatBubbleOutlineOutlinedIcon
-            onClick={handleOpenComment}
-            className="hover:cursor-pointer"
-            fontSize="small"
-          />
-          {props.post._count.Comment}
-          <ShareOutlinedIcon fontSize="small" />
-        </div>
         {/* Comment form */}
         <div className="flex gap-x-3 mt-5" ref={commentRef}>
           <Avatar user={userContext} type="commentAvatar" />
@@ -126,7 +118,7 @@ function Post(props) {
           </form>
         </div>
 
-        {comments && comments.length > 0 && (
+        {isCommentsOpened && comments && comments.length > 0 && (
           <ul>
             {comments.map((comment) => (
               <li

@@ -19,14 +19,14 @@ function App() {
   return (
     <>
       <HeaderContext value={{ activeMenuItem, setactiveMenuItem }}>
-        <div className="flex flex-col-reverse md:flex-row h-full dark:bg-slate-900 bg-gradient-to-br from-purple-100 via-pink-50 to-blue-100">
+        <div className="flex flex-col-reverse md:flex-row h-full bg-bg-secondary">
           <Header loaderData={loaderData}></Header>
 
           <SupabaseContext value={supabase}>
             {activeMenuItem !== "chats" && (
               <div className="overflow-auto flex-1">
-                <div className="grid grid-cols-1 2xl:grid-cols-4 xl:grid-cols-5 p-7 h-full">
-                  <div className="2xl:col-start-2 2xl:col-span-2 xl:col-start-2 xl:col-span-3 flex flex-col gap-y-3">
+                <div className="grid grid-cols-1 2xl:grid-cols-[30%_40%_30%] xl:grid-cols-4 p-7 h-full">
+                  <div className="2xl:col-start-2 2xl:col-span-1 xl:col-start-2 xl:col-span-2 flex flex-col">
                     <Outlet></Outlet>
                   </div>
                 </div>

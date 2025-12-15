@@ -1,5 +1,5 @@
-import { useContext, useEffect, useState } from "react";
-import api from "../../api";
+import { useEffect, useState } from "react";
+
 import Post from "../Post/Post";
 import { HeaderContext } from "../../Context";
 import { Loading } from "../utilities/Utilities";
@@ -24,13 +24,13 @@ function Feeds() {
   }, []);
 
   return (
-    <>
+    <div className="shadow rounded-4xl">
       {posts.length === 0 && <Loading />}
       {posts.length > 0 &&
         posts.map((post) => (
           <Post key={post.id} author={post.author} post={post} />
         ))}
-    </>
+    </div>
   );
 }
 
