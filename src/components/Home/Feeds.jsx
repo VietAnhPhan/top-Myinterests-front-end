@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 import Post from "../Post/Post";
 import { HeaderContext } from "../../Context";
@@ -11,13 +11,13 @@ function Feeds() {
   const api = useAPI();
   const [posts, setPosts] = useState([]);
 
-  // const headerContext = useContext(HeaderContext);
+  const headerContext = useContext(HeaderContext);
 
   useEffect(() => {
     async function fetchData() {
       const posts = await api.post.getPosts();
       setPosts(posts);
-      // headerContext.setactiveMenuItem("home");
+      headerContext.setactiveMenuItem("home");
     }
 
     fetchData();

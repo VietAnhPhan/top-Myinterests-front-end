@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 function useTitle(title) {
   useEffect(() => {
-    document.title = title + " | Gotoplaces";
+    document.title = title + " | Social Media";
   }, [title]);
 }
 
