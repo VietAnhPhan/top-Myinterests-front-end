@@ -1,7 +1,6 @@
-# 📱 **Messaging App**
+# 📱 **Social Media Web App**
 
-![Messaging App Banner](https://bkudoqbqykfhbgcxfelw.supabase.co/storage/v1/object/public/media/login-banner.png)
-*A modern chat platform inspired by WhatsApp.*
+*A modern Social Media platform inspired by Threads.*
 
 ---
 
@@ -18,13 +17,15 @@
 
 ## ✨ **Features**
 
-Our messaging app delivers the core functionality expected of a modern chat platform:
+Social Media Web app delivers the core functionality expected of a modern Socia Media platform:
 
+* **Comment/Like** - Interact with others posts
+* **Posting Content** - Include text and photos
+* **Following people** - Sending following requests to other people
 * 💬 **One-on-One Chat** – Private conversations between two users.
-* 🖼️ **Rich Media Support** – Send and receive images (with file size limits).
+* 🖼️ **Media Support** – Send and receive images (with file size limits).
 * 🕒 **Message History** – Persistent storage for all chat records.
 * 🔐 **User Authentication** – Secure login and registration using **JWT Auth**.
-* 📱 **Responsive UI** – Optimized for desktop, tablet, and mobile devices.
 
 ---
 
@@ -34,21 +35,12 @@ The app is built using a **modern, scalable architecture**.
 
 ### 🖥️ **Frontend**
 
-* **Framework:** React
+* **Framework:** ReactJS
 * **Styling:** Tailwind CSS / Styled Components
-
-### ⚙️ **Backend**
-
-* **Server:** Node.js (Express)
-* **Real-Time:** Placeholder for WebSocket or similar technology
 
 ### 🌐 **API**
 
 * **Type:** RESTful API
-
-### 🗄️ **Database**
-
-* **Primary DB:** PostgreSQL
 
 ---
 
@@ -60,7 +52,6 @@ Follow these steps to set up and run the project locally.
 
 Make sure you have installed:
 
-* **Node.js**
 * **npm** or **yarn**
 
 ---
@@ -70,68 +61,39 @@ Make sure you have installed:
 #### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/VietAnhPhan/top-messaging-app-front-end.git
+git clone http://github.com/vietAnhPhan/social-media-frontend.git
 ```
 
-#### 2️⃣ Install Server Dependencies
+#### 2️⃣ Install Client Dependencies
 
 ```bash
-cd server
+cd social-media-frontend
 npm install
 # or
 yarn install
 ```
-
-#### 3️⃣ Install Client Dependencies
-
-```bash
-cd ../client
-npm install
-```
-
 ---
 
 ## ⚙️ **Running Locally**
 
 ### **1. Configure Environment Variables**
 
-#### **Server `.env`**
+#### **client `.env`**
 
-Create a `.env` file in `server/`:
-
-```bash
-PORT=5000
-DATABASE_URL=your_database_connection_string
-JWT_SECRET=your_secret_key
-```
-
-#### **Client `.env`**
-
-Create a `.env` file in `client/`:
+Create a `.env` file in `social-media-frontend/`:
 
 ```bash
-NODE_ENV=development
-VITE_SUPABASE_PROJECT_URL=
-VITE_SUPABASE_API_KEY=
-VITE_SERVER_DOMAIN=
-VITE_LOCAL_HOST=
+VITE_SERVER_DOMAIN=[BACKEND_DOMAIN]/api
+VITE_SUPABASE_PROJECT_URL=[SUPABASE_PROJECT_URL]
+VITE_SUPABASE_API_KEY=[SUPABASE_API_KEY]
 ```
 
 ---
 
-### **2. Start the Backend Server**
+### **2. Start the Frontend Client**
 
 ```bash
-cd server
-npm run dev
-```
-
-Server runs at: **[http://localhost:[YOUR_PORT](http://localhost:[YOUR_PORT)]**
-
-### **3. Start the Frontend Client**
-
-```bash
-cd ../client
+cd ../social-media-frontend
 npm run dev
 ```
 
@@ -140,11 +102,17 @@ Client runs at: **[http://localhost:[YOUR_PORT](http://localhost:[YOUR_PORT)]**
 ---
 
 ## 🛠 **Usage**
+When you naviate to the root, you will see a feed of the page without login.
+Features do not require authentication:
 
-1. **Register:** Go to `http://localhost:[YOUR_PORT]/sign-up` to create a new account.
-2. **Login:** Use your credentials to access the chat dashboard.
-3. **Find Friends:** Search for users by username or ID.
-4. **Start Chatting:** Select a user or group to begin messaging!
+1. **Register (Optional):** Go to `http://localhost:[YOUR_PORT]/sign-up` to create a new account.
+2. **Login:** Use your credentials to access features like: Posting, updating profile, sending messages, following people.
+   
+Other features require authentication:
+3. **Posting content:** Include text and images.
+4. **Start Chatting:** Select a any user to start chatting
+5. **Following People**
+6. **Like, comment on posts**
 
 ---
 
@@ -182,4 +150,4 @@ See the `LICENSE` file for more information.
 ## 📧 **Contact**
 
 **Viet Anh Phan** – [vietanhphan2810@gmail.com](mailto:vietanhphan2810@gmail.com)
-**Project Link:** [GitHub Repository](https://github.com/VietAnhPhan/top-messaging-app-front-end)
+**Project Link:** [GitHub Repository](https://github.com/vietAnhPhan/social-media-frontend/)
