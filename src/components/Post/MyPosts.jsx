@@ -16,7 +16,6 @@ function MyPosts() {
   const user = useLoaderData();
   const api = useAPI(user.token);
   const [posts, setPosts] = useState([]);
-  const userContext = useContext(UserContext);
   const previewPhotos = useRef(null);
   const [error, setError] = useState("");
   const headerContext = useContext(HeaderContext);
@@ -25,7 +24,7 @@ function MyPosts() {
 
   useEffect(() => {
     async function fetchData() {
-      const myPosts = await api.post.getPostsByUsername(userContext.username);
+      const myPosts = await api.post.getPostsByUsername(user.username);
       setPosts(myPosts);
       headerContext.setactiveMenuItem("posts");
     }
@@ -70,7 +69,7 @@ function MyPosts() {
       const { data, error } = await supabaseContext.storage
         .from("posts")
         .upload(
-          `${userContext.username}/${selectedPhoto.name}`,
+          `${user.username}/${selectedPhoto.name}`,
           selectedPhoto,
           {
             upsert: true,
@@ -107,11 +106,11 @@ function MyPosts() {
       <Heading1 text="My Posts" />
       <p className="mt-3">Create and manage your posts</p>
 
-      {/* Post content */}
+      {/* Post form */}
       <ContentWrapper>
         <form action={handlePost}>
           <div className="flex gap-x-5">
-            <Avatar user={userContext} type={"chatFrame"} />
+            <Avatar user={user} type={"chatFrame"} />
             <textarea
               name="content"
               className="flex-1 min-h-32 resize-none p-3 border border-purple-200 focus:border-purple-400 rounded-lg bg-purple-50/30"

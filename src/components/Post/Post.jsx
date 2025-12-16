@@ -50,7 +50,7 @@ function Post(props) {
 
   return (
     <>
-      <div className="first:rounded-t-4xl post p-5 bg-white border-t border-l border-r border-zinc-300">
+      <div className="first:rounded-t-4xl first:border-t post p-5 bg-white border-b border-l border-r border-zinc-300">
         <div className="flex flex-col gap-y-5 flex-1">
           <div className="flex gap-x-3">
             <div className="shrink-0">
