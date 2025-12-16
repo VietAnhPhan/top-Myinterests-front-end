@@ -10,6 +10,7 @@ import { HeaderContext, SupabaseContext, UserContext } from "../../Context";
 import useTitle from "../../hooks/useTitle";
 import useAPI from "../../hooks/useAPI";
 import { useLoaderData } from "react-router";
+import HydrationLoader from "../utilities/loader/HydrationLoader";
 
 function MyPosts() {
   useTitle("Posts");
@@ -21,12 +22,14 @@ function MyPosts() {
   const headerContext = useContext(HeaderContext);
   const [selectedPhotos, setSelectedPhotos] = useState([]);
   const supabaseContext = useContext(SupabaseContext);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
       const myPosts = await api.post.getPostsByUsername(user.username);
       setPosts(myPosts);
       headerContext.setactiveMenuItem("posts");
+      setIsLoading(false);
     }
 
     fetchData();
@@ -68,13 +71,9 @@ function MyPosts() {
     for (const selectedPhoto of selectedPhotos) {
       const { data, error } = await supabaseContext.storage
         .from("posts")
-        .upload(
-          `${user.username}/${selectedPhoto.name}`,
-          selectedPhoto,
-          {
-            upsert: true,
-          }
-        );
+        .upload(`${user.username}/${selectedPhoto.name}`, selectedPhoto, {
+          upsert: true,
+        });
 
       if (data) {
         postMedias.push({
@@ -143,7 +142,8 @@ function MyPosts() {
         </form>
       </ContentWrapper>
 
-      {posts.length > 0 && (
+      {isLoading && <HydrationLoader />}
+      {!isLoading && posts.length > 0 && (
         <>
           <p className="mt-10">Your posts ({posts.length})</p>
           <div className="flex flex-col gap-y-5 mt-5">

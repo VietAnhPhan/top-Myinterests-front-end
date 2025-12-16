@@ -6,6 +6,7 @@ import { HeaderContext } from "../../Context";
 import useTitle from "../../hooks/useTitle";
 import useAPI from "../../hooks/useAPI";
 import { useLoaderData } from "react-router";
+import HydrationLoader from "../utilities/loader/HydrationLoader";
 
 function Notifications() {
   useTitle("Notifications");
@@ -13,6 +14,7 @@ function Notifications() {
   const api = useAPI(user.token);
   const [notifications, setNotifications] = useState([]);
   const headerContext = useContext(HeaderContext);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
@@ -20,6 +22,7 @@ function Notifications() {
 
       setNotifications(notifications);
       headerContext.setactiveMenuItem("notifications");
+      setIsLoading(false);
     }
     fetchData();
   }, []);
@@ -28,7 +31,8 @@ function Notifications() {
     <>
       <Heading1 text="Notifications" />
       <p className="mt-3">Stay updated with your interactions</p>
-      {notifications.length > 0 && (
+      {isLoading && <HydrationLoader />}
+      {!isLoading && notifications.length > 0 && (
         <>
           <ul>
             {notifications.map(

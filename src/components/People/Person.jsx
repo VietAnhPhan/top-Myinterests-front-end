@@ -11,6 +11,8 @@ function Person(props) {
     isFollowing(userContext.id, props.person.followee)
   );
 
+
+
   async function handleFollow() {
     const followRequest = await api.follow.followPerson(
       userContext.id,
